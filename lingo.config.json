@@ -1,0 +1,14 @@
+{
+  "$schema": "https://lingo.dev/schema/lingo.config.json",
+  "locales": ["en", "es", "de", "fr", "ja"],
+  "defaultLocale": "en",
+  "files": [
+    "data/resume-templates/*.json",
+    "data/email-templates/*.md",
+    "src/locales/*.json"
+  ],
+  "ai": {
+    "model": "gpt-4",
+    "contextWindow": 4096
+  }
+}
