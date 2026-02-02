@@ -95,7 +95,7 @@ export function InterviewSetupForm() {
             Job Information
           </CardTitle>
           <CardDescription>
-            Tell us about the job you're interviewing for
+            Tell us about the job you&apos;re interviewing for
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -212,7 +212,7 @@ export function InterviewSetupForm() {
                 </SelectContent>
               </Select>
               <p className="text-xs text-muted-foreground">
-                The language you'll use to respond
+                The language you&apos;ll use to respond
               </p>
             </div>
             <div className="space-y-2">

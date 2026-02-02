@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 const RAPIDAPI_KEY = process.env.RAPID_API_KEY;
 const RAPIDAPI_HOST = process.env.RAPID_API_HOST || "jsearch.p.rapidapi.com";
 
+// JSearchJob interface used for type casting API responses
 interface JSearchJob {
   job_id: string;
   job_title: string;

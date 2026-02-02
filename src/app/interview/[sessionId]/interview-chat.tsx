@@ -10,9 +10,6 @@ import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import {
@@ -20,7 +17,6 @@ import {
   Send,
   StopCircle,
   Languages,
-  MessageSquare,
   User,
   Bot,
 } from "lucide-react";
@@ -170,7 +166,7 @@ export function InterviewChat({ sessionId }: { sessionId: string }) {
         throw new Error("Failed to end interview");
       }
 
-      const data = await response.json();
+      await response.json();
 
       toast({
         title: "Interview Ended",

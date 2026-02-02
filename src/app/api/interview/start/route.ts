@@ -55,7 +55,7 @@ export async function POST(request: Request) {
       maxTokens: 500,
     });
 
-    let greeting = greetingText;
+    const greeting = greetingText;
 
     // Save session to database if user is authenticated
     if (user) {

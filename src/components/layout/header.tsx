@@ -12,7 +12,6 @@ import {
   BarChart3,
   Menu,
   X,
-  User,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 

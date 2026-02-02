@@ -89,7 +89,7 @@ export async function POST(request: Request, { params }: RouteParams) {
     });
 
     let interviewerResponse = responseText;
-    let originalResponse = responseText;
+    const originalResponse = responseText;
 
     // Translate response to user's language if different
     if (sessionData.user_language !== sessionData.interviewer_language) {
