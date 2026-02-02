@@ -11,6 +11,18 @@ const nextConfig: NextConfig = {
   //   defaultLocale: 'en',
   //   buildMode: 'ai', // Use 'pseudotranslator' for dev
   // },
+  
+  // Performance optimizations
+  reactStrictMode: true,
+  
+  // Optimize compilation and builds
+  swcMinify: true,
+  
+  // Compiler options for better performance
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
   images: {
     remotePatterns: [
       {
@@ -18,11 +30,46 @@ const nextConfig: NextConfig = {
         hostname: '**',
       },
     ],
+    // Optimize images for faster loading
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60,
   },
+  
   experimental: {
     serverActions: {
       bodySizeLimit: '2mb',
     },
+    // Enable optimizations
+    optimizePackageImports: [
+      '@radix-ui/react-accordion',
+      '@radix-ui/react-alert-dialog',
+      '@radix-ui/react-avatar',
+      '@radix-ui/react-checkbox',
+      '@radix-ui/react-dialog',
+      '@radix-ui/react-dropdown-menu',
+      '@radix-ui/react-label',
+      '@radix-ui/react-popover',
+      '@radix-ui/react-progress',
+      '@radix-ui/react-scroll-area',
+      '@radix-ui/react-select',
+      '@radix-ui/react-separator',
+      '@radix-ui/react-slot',
+      '@radix-ui/react-tabs',
+      '@radix-ui/react-toast',
+      '@radix-ui/react-tooltip',
+      'lucide-react',
+    ],
+  },
+  
+  // Enable webpack caching for faster rebuilds
+  webpack: (config, { dev }) => {
+    if (dev) {
+      config.cache = {
+        type: 'filesystem',
+        compression: 'gzip',
+      };
+    }
+    return config;
   },
 };
 
