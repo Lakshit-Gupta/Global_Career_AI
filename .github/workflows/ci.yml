@@ -110,7 +110,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build
-          path: .next/
+          path: .next
           if-no-files-found: error
 
   deploy-preview:
@@ -125,7 +125,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
-          path: .next/
+          path: .next
 
       # Add Vercel/Netlify preview deployment here
       - name: Deploy to Preview
@@ -143,7 +143,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
-          path: .next/
+          path: .next
 
       # Add Vercel/Netlify production deployment here
       - name: Deploy to Production
