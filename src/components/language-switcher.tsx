@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import {
   Select,
   SelectContent,
@@ -8,36 +7,27 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SUPPORTED_LANGUAGES, type SupportedLanguage } from "@/lib/utils";
+import { useLocale, setLocale } from "@lingo.dev/compiler/react";
+
+const SUPPORTED_LANGUAGES = [
+  { code: "en", name: "English", flag: "🇺🇸" },
+  { code: "es", name: "Español", flag: "🇪🇸" },
+  { code: "de", name: "Deutsch", flag: "🇩🇪" },
+  { code: "fr", name: "Français", flag: "🇫🇷" },
+  { code: "ja", name: "日本語", flag: "🇯🇵" },
+] as const;
 
 export function LanguageSwitcher() {
-  const [language, setLanguage] = useState<SupportedLanguage>("en");
-
-  useEffect(() => {
-    // Get language from localStorage or browser settings
-    const stored = localStorage.getItem("preferred_language");
-    if (stored && SUPPORTED_LANGUAGES.some((l) => l.code === stored)) {
-      setLanguage(stored as SupportedLanguage);
-    } else {
-      // Detect browser language
-      const browserLang = navigator.language.split("-")[0];
-      if (SUPPORTED_LANGUAGES.some((l) => l.code === browserLang)) {
-        setLanguage(browserLang as SupportedLanguage);
-      }
-    }
-  }, []);
+  const locale = useLocale();
 
   const handleLanguageChange = (value: string) => {
-    setLanguage(value as SupportedLanguage);
-    localStorage.setItem("preferred_language", value);
-    // In production, this would also update the user's preference in the database
-    // and trigger UI re-translation via Lingo.dev Compiler
+    setLocale(value);
   };
 
-  const currentLang = SUPPORTED_LANGUAGES.find((l) => l.code === language);
+  const currentLang = SUPPORTED_LANGUAGES.find((l) => l.code === locale);
 
   return (
-    <Select value={language} onValueChange={handleLanguageChange}>
+    <Select value={locale} onValueChange={handleLanguageChange}>
       <SelectTrigger className="w-[140px]">
         <SelectValue>
           <span className="flex items-center gap-2">

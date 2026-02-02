@@ -1,17 +1,7 @@
 import type { NextConfig } from 'next';
-
-// Lingo.dev Compiler integration for multilingual UI
-// In production, import { withLingo } from '@lingo.dev/compiler'
-// and wrap the config: export default withLingo(nextConfig, lingoConfig)
+import { withLingo } from '@lingo.dev/compiler/next';
 
 const nextConfig: NextConfig = {
-  // Lingo.dev will be configured here
-  // lingo: {
-  //   locales: ['en', 'es', 'de', 'fr', 'ja'],
-  //   defaultLocale: 'en',
-  //   buildMode: 'ai', // Use 'pseudotranslator' for dev
-  // },
-  
   // Performance optimizations
   reactStrictMode: true,
   
@@ -59,4 +49,14 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default async function (): Promise<NextConfig> {
+  return await withLingo(nextConfig, {
+    sourceRoot: './src/app',
+    sourceLocale: 'en',
+    targetLocales: ['es', 'de', 'fr', 'ja'],
+    models: 'lingo.dev',
+    dev: {
+      usePseudotranslator: true, // Fast fake translations in development
+    },
+  });
+}

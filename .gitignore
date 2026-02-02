@@ -44,4 +44,8 @@ next-env.d.ts
 
 # Supabase
 .supabase
+
+# Lingo.dev
 i18n.cache
+.lingo/metadata.json
+.lingo/*.cache
