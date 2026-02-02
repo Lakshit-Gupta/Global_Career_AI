@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { anthropic } from "@/lib/claude";
+import { callLLM } from "@/lib/llm";
 import { createClient } from "@/lib/supabase/server";
 
 interface RouteParams {
@@ -48,16 +48,14 @@ export async function POST(request: Request, { params }: RouteParams) {
       }
 
       // Update session status
-      await supabase
-        .from("interview_sessions")
+      await (supabase
+        .from("interview_sessions") as any)
         .update({ status: "completed", ended_at: new Date().toISOString() })
         .eq("id", sessionId);
     }
 
     // Generate feedback with Claude
-    const feedbackResponse = await anthropic.messages.create({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 1500,
+    const feedbackText = await callLLM({
       system:
         "You are an expert interview coach. Analyze the interview transcript and provide detailed, constructive feedback. Return ONLY valid JSON.",
       messages: [
@@ -91,18 +89,16 @@ Provide detailed feedback in this JSON format:
 }`,
         },
       ],
+      maxTokens: 1500,
     });
 
-    const feedbackContent = feedbackResponse.content[0];
-    if (feedbackContent.type !== "text") {
-      throw new Error("Unexpected response type");
-    }
+    const feedbackContent = feedbackText;
 
     let feedback;
     try {
-      feedback = JSON.parse(feedbackContent.text);
+      feedback = JSON.parse(feedbackContent);
     } catch {
-      const jsonMatch = feedbackContent.text.match(/\{[\s\S]*\}/);
+      const jsonMatch = feedbackContent.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
         feedback = JSON.parse(jsonMatch[0]);
       } else {
@@ -119,8 +115,8 @@ Provide detailed feedback in this JSON format:
 
     // Save feedback to database
     if (user) {
-      await supabase
-        .from("interview_sessions")
+      await (supabase
+        .from("interview_sessions") as any)
         .update({
           feedback,
           score: feedback.overallScore,

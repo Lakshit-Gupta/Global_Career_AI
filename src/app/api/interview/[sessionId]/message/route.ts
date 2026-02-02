@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { anthropic } from "@/lib/claude";
+import { callLLM } from "@/lib/llm";
 import { createClient } from "@/lib/supabase/server";
 
 interface RouteParams {
@@ -82,25 +82,19 @@ export async function POST(request: Request, { params }: RouteParams) {
     });
 
     // Generate interviewer response
-    const response = await anthropic.messages.create({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 800,
+    const responseText = await callLLM({
       system: buildInterviewerPrompt(sessionData),
       messages: conversationHistory,
+      maxTokens: 800,
     });
 
-    const responseContent = response.content[0];
-    if (responseContent.type !== "text") {
-      throw new Error("Unexpected response type");
-    }
-
-    let interviewerResponse = responseContent.text;
-    let originalResponse = responseContent.text;
+    let interviewerResponse = responseText;
+    let originalResponse = responseText;
 
     // Translate response to user's language if different
     if (sessionData.user_language !== sessionData.interviewer_language) {
       interviewerResponse = await translateText(
-        responseContent.text,
+        responseText,
         sessionData.interviewer_language,
         sessionData.user_language
       );
@@ -109,7 +103,7 @@ export async function POST(request: Request, { params }: RouteParams) {
     // Save messages to database
     if (user) {
       // Save user message
-      await supabase.from("interview_messages").insert({
+      await (supabase.from("interview_messages") as any).insert({
         session_id: sessionId,
         role: "user",
         content: message,
@@ -117,7 +111,7 @@ export async function POST(request: Request, { params }: RouteParams) {
       });
 
       // Save assistant message
-      await supabase.from("interview_messages").insert({
+      await (supabase.from("interview_messages") as any).insert({
         session_id: sessionId,
         role: "assistant",
         content: interviewerResponse,

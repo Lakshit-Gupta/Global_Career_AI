@@ -65,8 +65,9 @@ export async function PATCH(request: Request, { params }: RouteParams) {
 
     const updates = await request.json();
 
-    const { data, error } = await supabase
-      .from("applications")
+    // Type assertion needed for dynamic updates with strict Supabase types
+    const { data, error } = await (supabase
+      .from("applications") as any)
       .update({
         ...updates,
         updated_at: new Date().toISOString(),

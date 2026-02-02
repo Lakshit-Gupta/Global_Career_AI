@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -41,11 +41,14 @@ export function NewApplicationForm() {
   const [location, setLocation] = useState("");
   const [jobUrl, setJobUrl] = useState("");
   const [status, setStatus] = useState("applied");
-  const [appliedAt, setAppliedAt] = useState(
-    new Date().toISOString().split("T")[0]
-  );
+  const [appliedAt, setAppliedAt] = useState("");
   const [notes, setNotes] = useState("");
   const [resumeUsed, setResumeUsed] = useState("");
+
+  useEffect(() => {
+    // Set default date on client mount to avoid hydration mismatch
+    setAppliedAt(new Date().toISOString().split("T")[0]);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

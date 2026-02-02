@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { anthropic } from "@/lib/claude";
+import { callLLM } from "@/lib/llm";
 import { createClient } from "@/lib/supabase/server";
 
-// Generate resume with Claude and translate with Lingo.dev
+// Generate resume with LLM and translate with Lingo.dev
 
 export async function POST(request: Request) {
   try {
@@ -35,10 +35,8 @@ export async function POST(request: Request) {
       }
     }
 
-    // Generate resume with Claude
-    const message = await anthropic.messages.create({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 2000,
+    // Generate resume with LLM
+    const responseText = await callLLM({
       system: `You are an expert resume writer. Generate a professional, ATS-optimized resume tailored for the job description. Return ONLY valid JSON, no markdown.`,
       messages: [
         {
@@ -72,19 +70,15 @@ Return ONLY a JSON object with this exact structure:
 }`,
         },
       ],
+      maxTokens: 2000,
     });
-
-    const textContent = message.content[0];
-    if (textContent.type !== "text") {
-      throw new Error("Unexpected response type");
-    }
 
     let resume;
     try {
-      resume = JSON.parse(textContent.text);
+      resume = JSON.parse(responseText);
     } catch {
       // Try to extract JSON from response
-      const jsonMatch = textContent.text.match(/\{[\s\S]*\}/);
+      const jsonMatch = responseText.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
         resume = JSON.parse(jsonMatch[0]);
       } else {
@@ -189,9 +183,7 @@ async function scoreResume(
   resume: Record<string, unknown>,
   jobDescription: string
 ) {
-  const message = await anthropic.messages.create({
-    model: "claude-sonnet-4-20250514",
-    max_tokens: 1000,
+  const responseText = await callLLM({
     system:
       "You are an ATS expert. Score resumes against job descriptions. Return ONLY valid JSON.",
     messages: [
@@ -215,17 +207,13 @@ Return ONLY JSON:
 }`,
       },
     ],
+    maxTokens: 1000,
   });
 
-  const textContent = message.content[0];
-  if (textContent.type !== "text") {
-    throw new Error("Unexpected response type");
-  }
-
   try {
-    return JSON.parse(textContent.text);
+    return JSON.parse(responseText);
   } catch {
-    const jsonMatch = textContent.text.match(/\{[\s\S]*\}/);
+    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
       return JSON.parse(jsonMatch[0]);
     }
@@ -243,9 +231,7 @@ async function rewriteResume(
   feedback: Record<string, unknown>,
   targetLanguage: string
 ) {
-  const message = await anthropic.messages.create({
-    model: "claude-sonnet-4-20250514",
-    max_tokens: 2000,
+  const responseText = await callLLM({
     system:
       "You are an expert resume writer. Improve the resume based on feedback. Return ONLY valid JSON.",
     messages: [
@@ -260,18 +246,14 @@ Feedback: ${JSON.stringify(feedback)}
 Improve the resume to score higher. Return the same JSON structure.`,
       },
     ],
+    maxTokens: 2000,
   });
-
-  const textContent = message.content[0];
-  if (textContent.type !== "text") {
-    throw new Error("Unexpected response type");
-  }
 
   let improvedResume;
   try {
-    improvedResume = JSON.parse(textContent.text);
+    improvedResume = JSON.parse(responseText);
   } catch {
-    const jsonMatch = textContent.text.match(/\{[\s\S]*\}/);
+    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
       improvedResume = JSON.parse(jsonMatch[0]);
     } else {

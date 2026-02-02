@@ -21,8 +21,8 @@ export async function POST(request: Request) {
     const profileData = await request.json();
 
     // Upsert profile
-    const { data, error } = await supabase
-      .from("user_profiles")
+    const { data, error } = await (supabase
+      .from("user_profiles") as any)
       .upsert(
         {
           user_id: user.id,

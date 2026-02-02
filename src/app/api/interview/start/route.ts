@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { anthropic } from "@/lib/claude";
+import { callLLM } from "@/lib/llm";
 import { createClient } from "@/lib/supabase/server";
 import { v4 as uuidv4 } from "uuid";
 
@@ -43,9 +43,7 @@ export async function POST(request: Request) {
     });
 
     // Generate initial greeting
-    const greetingResponse = await anthropic.messages.create({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 500,
+    const greetingText = await callLLM({
       system: systemPrompt,
       messages: [
         {
@@ -54,16 +52,14 @@ export async function POST(request: Request) {
             "Start the interview with a professional greeting and your first question.",
         },
       ],
+      maxTokens: 500,
     });
 
-    const greetingContent = greetingResponse.content[0];
-    if (greetingContent.type !== "text") {
-      throw new Error("Unexpected response type");
-    }
+    let greeting = greetingText;
 
     // Save session to database if user is authenticated
     if (user) {
-      const { error } = await supabase.from("interview_sessions").insert({
+      const { error } = await (supabase.from("interview_sessions") as any).insert({
         id: sessionId,
         user_id: user.id,
         job_title: jobTitle,
@@ -79,17 +75,17 @@ export async function POST(request: Request) {
       }
 
       // Save initial message
-      await supabase.from("interview_messages").insert({
+      await (supabase.from("interview_messages") as any).insert({
         session_id: sessionId,
         role: "assistant",
-        content: greetingContent.text,
-        original_content: greetingContent.text,
+        content: greetingText,
+        original_content: greetingText,
       });
     }
 
     return NextResponse.json({
       sessionId,
-      greeting: greetingContent.text,
+      greeting: greetingText,
       session: {
         jobTitle,
         company,

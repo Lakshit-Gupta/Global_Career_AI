@@ -177,10 +177,10 @@ export function JobCard({ job, userLang, isTranslating }: JobCardProps) {
         {/* Actions */}
         <div className="mt-4 flex flex-wrap gap-2">
           <Button asChild variant="default">
-            <Link href={`/jobs/${job.id}`}>View Details</Link>
+            <Link href={`/jobs/${encodeURIComponent(job.id)}`}>View Details</Link>
           </Button>
           <Button asChild variant="outline">
-            <Link href={`/resume/generate?jobId=${job.id}`}>
+            <Link href={`/resume/generate?jobId=${encodeURIComponent(job.id)}`}>
               <FileText className="mr-2 h-4 w-4" />
               Generate Resume
             </Link>

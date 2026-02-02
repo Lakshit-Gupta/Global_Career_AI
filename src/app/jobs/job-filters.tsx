@@ -16,7 +16,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Search, MapPin, Briefcase } from "lucide-react";
 
 const JOB_TYPES = [
-  { value: "", label: "All Types" },
+  { value: "all", label: "All Types" },
   { value: "FULLTIME", label: "Full-time" },
   { value: "PARTTIME", label: "Part-time" },
   { value: "CONTRACTOR", label: "Contract" },
@@ -24,7 +24,7 @@ const JOB_TYPES = [
 ];
 
 const LOCATIONS = [
-  { value: "", label: "All Locations" },
+  { value: "all", label: "All Locations" },
   { value: "Germany", label: "🇩🇪 Germany" },
   { value: "France", label: "🇫🇷 France" },
   { value: "Spain", label: "🇪🇸 Spain" },
@@ -40,22 +40,22 @@ export function JobFilters() {
   const searchParams = useSearchParams();
 
   const [query, setQuery] = useState(searchParams.get("query") || "");
-  const [location, setLocation] = useState(searchParams.get("location") || "");
-  const [jobType, setJobType] = useState(searchParams.get("type") || "");
+  const [location, setLocation] = useState(searchParams.get("location") || "all");
+  const [jobType, setJobType] = useState(searchParams.get("type") || "all");
 
   const handleSearch = () => {
     const params = new URLSearchParams();
     if (query) params.set("query", query);
-    if (location) params.set("location", location);
-    if (jobType) params.set("type", jobType);
+    if (location && location !== "all") params.set("location", location);
+    if (jobType && jobType !== "all") params.set("type", jobType);
 
     router.push(`/jobs?${params.toString()}`);
   };
 
   const handleReset = () => {
     setQuery("");
-    setLocation("");
-    setJobType("");
+    setLocation("all");
+    setJobType("all");
     router.push("/jobs");
   };
 

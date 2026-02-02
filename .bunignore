@@ -1,0 +1,6 @@
+# Bun lockfile
+
+bun.lockb
+
+# Bun install cache
+.bun

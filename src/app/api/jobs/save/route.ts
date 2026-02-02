@@ -22,8 +22,8 @@ export async function POST(request: Request) {
     const jobData = await request.json();
 
     // First, upsert the job into jobs table
-    const { data: job, error: jobError } = await supabase
-      .from("jobs")
+    const { data: job, error: jobError } = await (supabase
+      .from("jobs") as any)
       .upsert(
         {
           id: jobData.id,
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
     }
 
     // Save to user's saved jobs
-    const { error: savedError } = await supabase.from("saved_jobs").upsert(
+    const { error: savedError } = await (supabase.from("saved_jobs") as any).upsert(
       {
         user_id: user.id,
         job_id: job.id,

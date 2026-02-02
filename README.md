@@ -52,8 +52,7 @@ Apply to jobs anywhere in the world with AI assistance that handles translations
 
 ### Prerequisites
 
-- Node.js 18+
-- npm or pnpm
+- [Bun](https://bun.sh) 1.0+
 - Supabase account
 - Anthropic API key
 - Lingo.dev API key
@@ -69,7 +68,7 @@ Apply to jobs anywhere in the world with AI assistance that handles translations
 
 2. **Install dependencies**
    ```bash
-   npm install
+   bun install
    ```
 
 3. **Set up environment variables**
@@ -81,12 +80,12 @@ Apply to jobs anywhere in the world with AI assistance that handles translations
 
 4. **Set up the database**
    ```bash
-   npm run db:migrate
+   bun run db:migrate
    ```
 
 5. **Start the development server**
    ```bash
-   npm run dev
+   bun dev
    ```
 
 6. **Open your browser**

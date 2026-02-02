@@ -82,7 +82,7 @@ export function Footer() {
 
         <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
           <p>
-            © {new Date().getFullYear()} GlobalHire AI. Built with ❤️ for the
+            © 2026 GlobalHire AI. Built with ❤️ for the
             Lingo.dev Hackathon.
           </p>
           <p className="mt-2">
@@ -106,12 +106,12 @@ export function Footer() {
             </a>
             , and{" "}
             <a
-              href="https://anthropic.com"
+              href="https://openrouter.ai"
               target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:underline"
             >
-              Claude AI
+              OpenRouter AI
             </a>
           </p>
         </div>

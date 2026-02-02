@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { anthropic } from "@/lib/claude";
+import { callLLM } from "@/lib/llm";
 
 // Rewrite resume based on ATS feedback
 
@@ -15,10 +15,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Rewrite with Claude
-    const message = await anthropic.messages.create({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 2000,
+    // Rewrite with LLM
+    const responseText = await callLLM({
       system: `You are an expert resume writer. Your job is to improve resumes to score higher on ATS systems. Return ONLY valid JSON.`,
       messages: [
         {
@@ -49,18 +47,14 @@ Return the improved resume as JSON with this structure:
 }`,
         },
       ],
+      maxTokens: 2000,
     });
-
-    const textContent = message.content[0];
-    if (textContent.type !== "text") {
-      throw new Error("Unexpected response type");
-    }
 
     let improvedResume;
     try {
-      improvedResume = JSON.parse(textContent.text);
+      improvedResume = JSON.parse(responseText);
     } catch {
-      const jsonMatch = textContent.text.match(/\{[\s\S]*\}/);
+      const jsonMatch = responseText.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
         improvedResume = JSON.parse(jsonMatch[0]);
       } else {
@@ -141,42 +135,37 @@ async function scoreResume(
   resume: Record<string, unknown>,
   jobDescription: string
 ) {
-  const message = await anthropic.messages.create({
-    model: "claude-sonnet-4-20250514",
-    max_tokens: 1000,
+  const responseText = await callLLM({
     system:
-      "You are an ATS expert. Score resumes. Return ONLY valid JSON with score 0-100.",
+      "You are an ATS expert. Score resumes against job descriptions. Return ONLY valid JSON.",
     messages: [
       {
         role: "user",
-        content: `Score this resume:
+        content: `Score this resume (0-100):
 
 Resume: ${JSON.stringify(resume)}
+
 Job: ${jobDescription}
 
-Return JSON:
+Return ONLY JSON:
 {
   "score": 75,
   "feedback": {
-    "strengths": ["strength"],
-    "improvements": ["improvement"],
-    "missingKeywords": ["keyword"]
+    "strengths": ["strength 1"],
+    "improvements": ["improvement 1"],
+    "missingKeywords": ["keyword 1"]
   },
-  "suggestions": ["suggestion"]
+  "suggestions": ["suggestion 1"]
 }`,
       },
     ],
+    maxTokens: 1000,
   });
 
-  const textContent = message.content[0];
-  if (textContent.type !== "text") {
-    throw new Error("Unexpected response type");
-  }
-
   try {
-    return JSON.parse(textContent.text);
+    return JSON.parse(responseText);
   } catch {
-    const jsonMatch = textContent.text.match(/\{[\s\S]*\}/);
+    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
       return JSON.parse(jsonMatch[0]);
     }

@@ -20,8 +20,8 @@ export async function POST(request: Request) {
 
     const { title, content, jobId, language, atsScore } = await request.json();
 
-    const { data, error } = await supabase
-      .from("resumes")
+    const { data, error } = await (supabase
+      .from("resumes") as any)
       .insert({
         user_id: user.id,
         title: title || "Untitled Resume",

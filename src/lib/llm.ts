@@ -1,11 +1,50 @@
-import Anthropic from "@anthropic-ai/sdk";
+// LLM Provider - OpenRouter with Llama 3.3
 
-// Initialize Anthropic client
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY!,
-});
+const OPENROUTER_MODEL_ID = "meta-llama/llama-3.3-70b-instruct:free";
 
-export { anthropic };
+// Wrapper function to call LLM via OpenRouter
+export async function callLLM(params: {
+  system: string;
+  messages: Array<{ role: "user" | "assistant"; content: string }>;
+  maxTokens?: number;
+}): Promise<string> {
+  const { system, messages, maxTokens = 2000 } = params;
+
+  if (!process.env.OPENROUTER_API_KEY) {
+    throw new Error(
+      "No LLM API configured. Please set OPENROUTER_API_KEY in your environment variables."
+    );
+  }
+
+  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+      "Content-Type": "application/json",
+      "HTTP-Referer": process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+      "X-Title": "GlobalHire AI",
+    },
+    body: JSON.stringify({
+      model: OPENROUTER_MODEL_ID,
+      messages: [
+        { role: "system", content: system },
+        ...messages,
+      ],
+      max_tokens: maxTokens,
+    }),
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    throw new Error(`OpenRouter API error: ${response.status} - ${error}`);
+  }
+
+  const data = await response.json() as {
+    choices: Array<{ message: { content: string } }>;
+  };
+
+  return data.choices[0].message.content;
+}
 
 // System prompts for different use cases
 export const SYSTEM_PROMPTS = {
@@ -62,9 +101,8 @@ export async function generateResumeContent(
   userData: Record<string, unknown>,
   jobDescription: string
 ) {
-  const message = await anthropic.messages.create({
-    model: "claude-sonnet-4-20250514",
-    max_tokens: 2000,
+  const response = await callLLM({
+    system: SYSTEM_PROMPTS.resumeGenerator,
     messages: [
       {
         role: "user",
@@ -97,15 +135,10 @@ Return ONLY a valid JSON object with this exact structure (no markdown, no code 
 }`,
       },
     ],
-    system: SYSTEM_PROMPTS.resumeGenerator,
+    maxTokens: 2000,
   });
 
-  const textContent = message.content[0];
-  if (textContent.type !== "text") {
-    throw new Error("Unexpected response type from Claude");
-  }
-
-  return JSON.parse(textContent.text);
+  return JSON.parse(response);
 }
 
 // Helper function to score resume against job description
@@ -113,9 +146,8 @@ export async function scoreResume(
   resumeContent: Record<string, unknown>,
   jobDescription: string
 ) {
-  const message = await anthropic.messages.create({
-    model: "claude-sonnet-4-20250514",
-    max_tokens: 1000,
+  const response = await callLLM({
+    system: SYSTEM_PROMPTS.atsScorer,
     messages: [
       {
         role: "user",
@@ -137,15 +169,10 @@ Return ONLY a valid JSON object with this exact structure (no markdown, no code 
 }`,
       },
     ],
-    system: SYSTEM_PROMPTS.atsScorer,
+    maxTokens: 1000,
   });
 
-  const textContent = message.content[0];
-  if (textContent.type !== "text") {
-    throw new Error("Unexpected response type from Claude");
-  }
-
-  return JSON.parse(textContent.text);
+  return JSON.parse(response);
 }
 
 // Helper function to generate interview response
@@ -171,19 +198,11 @@ Conduct a natural, professional interview. If this is the first message, introdu
     { role: "user" as const, content: userMessage },
   ];
 
-  const response = await anthropic.messages.create({
-    model: "claude-sonnet-4-20250514",
-    max_tokens: 1000,
+  return await callLLM({
     system: systemPrompt,
     messages,
+    maxTokens: 1000,
   });
-
-  const textContent = response.content[0];
-  if (textContent.type !== "text") {
-    throw new Error("Unexpected response type from Claude");
-  }
-
-  return textContent.text;
 }
 
 // Helper function to generate interview feedback
@@ -191,9 +210,8 @@ export async function generateInterviewFeedback(
   jobInfo: { title: string; company: string; description: string },
   transcript: Array<{ role: string; content: string }>
 ) {
-  const message = await anthropic.messages.create({
-    model: "claude-sonnet-4-20250514",
-    max_tokens: 1500,
+  const response = await callLLM({
+    system: SYSTEM_PROMPTS.interviewFeedback,
     messages: [
       {
         role: "user",
@@ -222,13 +240,8 @@ Return ONLY a valid JSON object with this exact structure (no markdown, no code 
 }`,
       },
     ],
-    system: SYSTEM_PROMPTS.interviewFeedback,
+    maxTokens: 1500,
   });
 
-  const textContent = message.content[0];
-  if (textContent.type !== "text") {
-    throw new Error("Unexpected response type from Claude");
-  }
-
-  return JSON.parse(textContent.text);
+  return JSON.parse(response);
 }

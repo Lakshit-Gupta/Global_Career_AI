@@ -55,16 +55,16 @@ export async function GET(request: Request, { params }: RouteParams) {
 
     return NextResponse.json({
       session: {
-        jobTitle: session.job_title,
-        company: session.company,
-        interviewType: session.interview_type,
-        userLanguage: session.user_language,
-        interviewerLanguage: session.interviewer_language,
+        jobTitle: (session as any).job_title,
+        company: (session as any).company,
+        interviewType: (session as any).interview_type,
+        userLanguage: (session as any).user_language,
+        interviewerLanguage: (session as any).interviewer_language,
         questionsAsked:
-          messages?.filter((m) => m.role === "assistant").length || 0,
+          messages?.filter((m: any) => m.role === "assistant").length || 0,
       },
       messages:
-        messages?.map((m) => ({
+        messages?.map((m: any) => ({
           id: m.id,
           role: m.role,
           content: m.content,

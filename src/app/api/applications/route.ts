@@ -29,8 +29,8 @@ export async function POST(request: Request) {
       jobId,
     } = await request.json();
 
-    const { data, error } = await supabase
-      .from("applications")
+    const { data, error } = await (supabase
+      .from("applications") as any)
       .insert({
         user_id: user.id,
         job_id: jobId || null,

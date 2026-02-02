@@ -24,47 +24,23 @@ export const metadata: Metadata = {
   description: "View job details and generate a tailored resume",
 };
 
-// In production, this would fetch from the database or API
+// Fetch job details from API
 async function getJob(id: string) {
-  // Mock job data for demo
-  const mockJobs = [
-    {
-      id: "mock-1",
-      title: "Senior Full Stack Developer",
-      company: "TechCorp Berlin",
-      location: "Berlin, Germany",
-      description: `We are looking for a Senior Full Stack Developer to join our international team. You will work on cutting-edge web applications using React, Node.js, and cloud technologies.
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/jobs/${encodeURIComponent(id)}`,
+      { cache: "no-store" }
+    );
+    
+    if (response.ok) {
+      const data = await response.json();
+      return data.job;
+    }
+  } catch (error) {
+    console.error("Error fetching job:", error);
+  }
 
-## Responsibilities
-- Design and develop scalable web applications
-- Collaborate with cross-functional teams
-- Mentor junior developers
-- Participate in code reviews
-- Contribute to architectural decisions
-
-## Requirements
-- 5+ years of experience in web development
-- Strong proficiency in React and TypeScript
-- Experience with Node.js and PostgreSQL
-- Familiarity with cloud services (AWS/GCP)
-- Fluent in English, German is a plus
-
-## Benefits
-- Competitive salary (€70,000 - €90,000)
-- Remote-friendly work environment
-- International and diverse team
-- Learning and development budget
-- 30 days vacation
-- Modern office in Berlin Mitte`,
-      job_type: "FULLTIME",
-      salary_range: "€70,000 - €90,000",
-      source_url: "https://example.com/apply/1",
-      posted_at: new Date().toISOString(),
-      original_language: "en",
-    },
-  ];
-
-  return mockJobs.find((job) => job.id === id);
+  return null;
 }
 
 interface JobDetailPageProps {
@@ -142,7 +118,7 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
             <CardContent className="pt-6">
               {/* Job description */}
               <div className="prose prose-sm max-w-none dark:prose-invert">
-                {job.description.split("\n").map((paragraph, index) => {
+                {job.description.split("\n").map((paragraph: string, index: number) => {
                   if (paragraph.startsWith("## ")) {
                     return (
                       <h2 key={index} className="mt-6 text-lg font-semibold">
