@@ -70,7 +70,7 @@ export async function POST(request: Request, { params }: RouteParams) {
       );
     }
 
-    // Build conversation history for Claude
+    // Build conversation history for LLM
     const conversationHistory = previousMessages.map((m) => ({
       role: m.role as "user" | "assistant",
       content: m.content,

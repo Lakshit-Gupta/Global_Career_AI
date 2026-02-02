@@ -7,7 +7,7 @@ Apply to jobs anywhere in the world with AI assistance that handles translations
 ![Next.js](https://img.shields.io/badge/Next.js-15-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
 ![Supabase](https://img.shields.io/badge/Supabase-PostgreSQL-green)
-![Claude AI](https://img.shields.io/badge/Claude-AI-purple)
+![OpenRouter](https://img.shields.io/badge/OpenRouter-AI-purple)
 ![Lingo.dev](https://img.shields.io/badge/Lingo.dev-i18n-orange)
 
 ## 🎯 Features
@@ -20,7 +20,7 @@ Apply to jobs anywhere in the world with AI assistance that handles translations
 
 ### 📄 AI Resume Builder
 - Generate tailored resumes for specific jobs
-- Claude AI-powered content optimization
+- AI-powered content optimization (Llama 3.3 70B via OpenRouter)
 - ATS (Applicant Tracking System) scoring
 - Automatic rewrite if score is below 70%
 - Export to PDF in any language
@@ -44,7 +44,7 @@ Apply to jobs anywhere in the world with AI assistance that handles translations
 - **Language**: TypeScript
 - **Styling**: [TailwindCSS](https://tailwindcss.com/) + [Shadcn/ui](https://ui.shadcn.com/)
 - **Database**: [Supabase](https://supabase.com/) (PostgreSQL + Auth + Realtime)
-- **AI**: [Anthropic Claude](https://anthropic.com/) (claude-sonnet-4-20250514)
+- **AI**: [OpenRouter](https://openrouter.ai/) (meta-llama/llama-3.3-70b-instruct)
 - **Translation**: [Lingo.dev](https://lingo.dev/) (Compiler, SDK, CLI, GitHub Actions)
 - **Jobs API**: [RapidAPI JSearch](https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch)
 
@@ -54,7 +54,7 @@ Apply to jobs anywhere in the world with AI assistance that handles translations
 
 - [Bun](https://bun.sh) 1.0+
 - Supabase account
-- Anthropic API key
+- OpenRouter API key
 - Lingo.dev API key
 - RapidAPI key (for JSearch)
 

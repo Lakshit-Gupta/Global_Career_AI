@@ -102,7 +102,7 @@ export default function ResumePage() {
             {
               title: "AI-Powered",
               description:
-                "Claude AI generates compelling content based on your experience",
+                "AI generates compelling content based on your experience",
             },
             {
               title: "Multilingual",

@@ -54,7 +54,7 @@ export async function POST(request: Request, { params }: RouteParams) {
         .eq("id", sessionId);
     }
 
-    // Generate feedback with Claude
+    // Generate feedback with LLM
     const feedbackText = await callLLM({
       system:
         "You are an expert interview coach. Analyze the interview transcript and provide detailed, constructive feedback. Return ONLY valid JSON.",
