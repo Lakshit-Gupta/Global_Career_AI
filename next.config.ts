@@ -15,9 +15,6 @@ const nextConfig: NextConfig = {
   // Performance optimizations
   reactStrictMode: true,
   
-  // Optimize compilation and builds
-  swcMinify: true,
-  
   // Compiler options for better performance
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
@@ -39,7 +36,7 @@ const nextConfig: NextConfig = {
     serverActions: {
       bodySizeLimit: '2mb',
     },
-    // Enable optimizations
+    // Enable optimizations for faster imports
     optimizePackageImports: [
       '@radix-ui/react-accordion',
       '@radix-ui/react-alert-dialog',
@@ -59,17 +56,6 @@ const nextConfig: NextConfig = {
       '@radix-ui/react-tooltip',
       'lucide-react',
     ],
-  },
-  
-  // Enable webpack caching for faster rebuilds
-  webpack: (config, { dev }) => {
-    if (dev) {
-      config.cache = {
-        type: 'filesystem',
-        compression: 'gzip',
-      };
-    }
-    return config;
   },
 };
 
