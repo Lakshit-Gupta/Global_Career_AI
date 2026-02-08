@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { LingoProvider } from "@lingo.dev/compiler/react";
+import { AuthProvider } from "@/components/providers/auth-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,12 +33,14 @@ export default function RootLayout({
     <LingoProvider>
       <html lang="en" suppressHydrationWarning>
         <body className={inter.className}>
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-          <Toaster />
+          <AuthProvider>
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
+            <Toaster />
+          </AuthProvider>
         </body>
       </html>
     </LingoProvider>

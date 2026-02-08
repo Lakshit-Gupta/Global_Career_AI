@@ -1,7 +1,25 @@
 import { NextResponse } from "next/server";
+import { LingoDotDevEngine } from "lingo.dev/sdk";
+
+// Initialize SDK once
+let lingoDotDev: LingoDotDevEngine | null = null;
+
+function getLingoDotDevEngine(): LingoDotDevEngine | null {
+  if (!lingoDotDev) {
+    const apiKey = process.env.LINGODOTDEV_API_KEY || process.env.LINGO_API_KEY;
+    if (!apiKey) {
+      return null;
+    }
+    lingoDotDev = new LingoDotDevEngine({
+      apiKey,
+      batchSize: 100,
+      idealBatchItemSize: 1000,
+    });
+  }
+  return lingoDotDev;
+}
 
 // Batch translation endpoint for translating multiple strings at once
-
 export async function POST(request: Request) {
   try {
     const { texts, from, to } = await request.json();
@@ -18,10 +36,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ translatedTexts: texts });
     }
 
-    const LINGO_API_KEY = process.env.LINGO_API_KEY;
+    const engine = getLingoDotDevEngine();
 
     // If no API key, return mock translations
-    if (!LINGO_API_KEY) {
+    if (!engine) {
       const langIndicator = `[${to.toUpperCase()}] `;
       const translatedTexts = texts.map((t: string) => langIndicator + t);
       return NextResponse.json({
@@ -30,31 +48,18 @@ export async function POST(request: Request) {
       });
     }
 
-    // Call Lingo.dev API for each text (in production, use batch API)
+    // Use Lingo.dev SDK for batch translation
     const translatedTexts = await Promise.all(
       texts.map(async (text: string) => {
         try {
-          const response = await fetch("https://api.lingo.dev/v1/translate", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${LINGO_API_KEY}`,
-            },
-            body: JSON.stringify({
-              text,
-              sourceLocale: from || "auto",
-              targetLocale: to,
-            }),
+          return await engine.localizeText(text, {
+            sourceLocale: from || null,
+            targetLocale: to,
+            fast: false,
           });
-
-          if (!response.ok) {
-            return text;
-          }
-
-          const data = await response.json();
-          return data.translatedText || text;
-        } catch {
-          return text;
+        } catch (error) {
+          console.error(`Translation failed for text: ${text}`, error);
+          return text; // Return original on error
         }
       })
     );

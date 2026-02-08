@@ -1,0 +1,2041 @@
+{
+  "entries": {
+    "f9f7d0382d57": {
+      "type": "metadata",
+      "sourceText": "GlobalHire AI - Break Language Barriers in Job Hunting",
+      "context": {
+        "fieldPath": "title",
+        "filePath": "layout.tsx"
+      },
+      "hash": "f9f7d0382d57",
+      "location": {
+        "filePath": "layout.tsx",
+        "line": 12,
+        "column": 9
+      }
+    },
+    "af307874e2b1": {
+      "type": "metadata",
+      "sourceText": "Discover international jobs, generate multilingual resumes, and practice AI interviews in any language.",
+      "context": {
+        "fieldPath": "description",
+        "filePath": "layout.tsx"
+      },
+      "hash": "af307874e2b1",
+      "location": {
+        "filePath": "layout.tsx",
+        "line": 14,
+        "column": 4
+      }
+    },
+    "88ce95ee9fbd": {
+      "type": "content",
+      "sourceText": "Break Language Barriers in <span0>Job Hunting</span0>",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "88ce95ee9fbd",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 19,
+        "column": 12
+      }
+    },
+    "e0349f82bcb7": {
+      "type": "content",
+      "sourceText": "Discover international jobs, generate multilingual resumes with ATS optimization, and practice AI-powered interviews in any language.",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "e0349f82bcb7",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 23,
+        "column": 12
+      }
+    },
+    "76d76dc0f543": {
+      "type": "content",
+      "sourceText": "Discover Jobs",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "76d76dc0f543",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 30,
+        "column": 16
+      }
+    },
+    "2a3df723724c": {
+      "type": "content",
+      "sourceText": "Get Started Free",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "2a3df723724c",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 33,
+        "column": 16
+      }
+    },
+    "2ec577641f01": {
+      "type": "content",
+      "sourceText": "Everything You Need to Land Your Dream International Job",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "2ec577641f01",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 43,
+        "column": 10
+      }
+    },
+    "32c16ba805ff": {
+      "type": "content",
+      "sourceText": "Job Discovery",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "32c16ba805ff",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 50,
+        "column": 16
+      }
+    },
+    "d1bdb48e3de7": {
+      "type": "content",
+      "sourceText": "Browse jobs from any country with auto-translated descriptions",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "d1bdb48e3de7",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 51,
+        "column": 16
+      }
+    },
+    "43b157c8d2ab": {
+      "type": "content",
+      "sourceText": "Search thousands of jobs worldwide. Job descriptions are automatically translated to your preferred language using Lingo.dev.",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "43b157c8d2ab",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 56,
+        "column": 16
+      }
+    },
+    "39291481973d": {
+      "type": "content",
+      "sourceText": "Smart Resumes",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "39291481973d",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 67,
+        "column": 16
+      }
+    },
+    "311560fe03b1": {
+      "type": "content",
+      "sourceText": "AI-generated resumes tailored for each job",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "311560fe03b1",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 68,
+        "column": 16
+      }
+    },
+    "2b74247427a4": {
+      "type": "content",
+      "sourceText": "Generate professional resumes in any language. Get ATS scores and automatic rewrites to maximize your chances.",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "2b74247427a4",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 73,
+        "column": 16
+      }
+    },
+    "51eecbcf7975": {
+      "type": "content",
+      "sourceText": "AI Interviews",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "51eecbcf7975",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 83,
+        "column": 16
+      }
+    },
+    "4b6724024537": {
+      "type": "content",
+      "sourceText": "Practice interviews with AI in any language",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "4b6724024537",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 84,
+        "column": 16
+      }
+    },
+    "c1d44d76e203": {
+      "type": "content",
+      "sourceText": "Our AI interviewer asks relevant questions based on the job. Practice in German, Spanish, French, Japanese, or English.",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "c1d44d76e203",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 89,
+        "column": 16
+      }
+    },
+    "bca0c43b055b": {
+      "type": "content",
+      "sourceText": "Track Progress",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "bca0c43b055b",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 99,
+        "column": 16
+      }
+    },
+    "e3fd9dc29cf2": {
+      "type": "content",
+      "sourceText": "Monitor all your applications in one place",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "e3fd9dc29cf2",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 100,
+        "column": 16
+      }
+    },
+    "367986d13e5d": {
+      "type": "content",
+      "sourceText": "Keep track of every application, interview session, and resume. Never lose sight of your job search progress.",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "367986d13e5d",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 105,
+        "column": 16
+      }
+    },
+    "d572677e767e": {
+      "type": "content",
+      "sourceText": "How It Works",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "d572677e767e",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 118,
+        "column": 10
+      }
+    },
+    "7ebba45e1beb": {
+      "type": "content",
+      "sourceText": "1",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "7ebba45e1beb",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 122,
+        "column": 16
+      }
+    },
+    "41e51c0c2f38": {
+      "type": "content",
+      "sourceText": "Find Jobs",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "41e51c0c2f38",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 125,
+        "column": 16
+      }
+    },
+    "31c3492d2069": {
+      "type": "content",
+      "sourceText": "Search for jobs in any country. We translate job descriptions to your language instantly.",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "31c3492d2069",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 126,
+        "column": 16
+      }
+    },
+    "4dccaf0571db": {
+      "type": "content",
+      "sourceText": "2",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "4dccaf0571db",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 132,
+        "column": 16
+      }
+    },
+    "dc20b0e59d14": {
+      "type": "content",
+      "sourceText": "Generate Resume",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "dc20b0e59d14",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 135,
+        "column": 16
+      }
+    },
+    "898242b1d764": {
+      "type": "content",
+      "sourceText": "Our AI creates a tailored resume in the target language, optimized for ATS systems.",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "898242b1d764",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 136,
+        "column": 16
+      }
+    },
+    "c01508cff097": {
+      "type": "content",
+      "sourceText": "3",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "c01508cff097",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 142,
+        "column": 16
+      }
+    },
+    "61b095d70d9f": {
+      "type": "content",
+      "sourceText": "Practice Interview",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "61b095d70d9f",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 145,
+        "column": 16
+      }
+    },
+    "b667fe05c7e8": {
+      "type": "content",
+      "sourceText": "Prepare with our AI interviewer who speaks the job's language and knows the role.",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "b667fe05c7e8",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 146,
+        "column": 16
+      }
+    },
+    "d40fb34a29b5": {
+      "type": "content",
+      "sourceText": "Supported Languages",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "d40fb34a29b5",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 159,
+        "column": 10
+      }
+    },
+    "df64a55dd39a": {
+      "type": "content",
+      "sourceText": "Ready to Land Your Dream International Job?",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "df64a55dd39a",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 183,
+        "column": 10
+      }
+    },
+    "0ff7362e296e": {
+      "type": "content",
+      "sourceText": "Join thousands of developers who have broken language barriers with GlobalHire AI.",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "0ff7362e296e",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 186,
+        "column": 10
+      }
+    },
+    "dffec23995e8": {
+      "type": "content",
+      "sourceText": "Start Free Today",
+      "context": {
+        "componentName": "HomePage",
+        "filePath": "page.tsx"
+      },
+      "hash": "dffec23995e8",
+      "location": {
+        "filePath": "page.tsx",
+        "line": 191,
+        "column": 12
+      }
+    },
+    "65b7b11561a5": {
+      "type": "content",
+      "sourceText": "GlobalHire AI",
+      "context": {
+        "componentName": "Header",
+        "filePath": "../components/layout/header.tsx"
+      },
+      "hash": "65b7b11561a5",
+      "location": {
+        "filePath": "../components/layout/header.tsx",
+        "line": 35,
+        "column": 10
+      }
+    },
+    "9182e0089139": {
+      "type": "content",
+      "sourceText": "Log in",
+      "context": {
+        "componentName": "Header",
+        "filePath": "../components/layout/header.tsx"
+      },
+      "hash": "9182e0089139",
+      "location": {
+        "filePath": "../components/layout/header.tsx",
+        "line": 112,
+        "column": 16
+      }
+    },
+    "302e92db178f": {
+      "type": "content",
+      "sourceText": "Sign up",
+      "context": {
+        "componentName": "Header",
+        "filePath": "../components/layout/header.tsx"
+      },
+      "hash": "302e92db178f",
+      "location": {
+        "filePath": "../components/layout/header.tsx",
+        "line": 115,
+        "column": 16
+      }
+    },
+    "2e0810fb3da6": {
+      "type": "content",
+      "sourceText": "GlobalHire AI",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "2e0810fb3da6",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 13,
+        "column": 14
+      }
+    },
+    "17c512b81d70": {
+      "type": "content",
+      "sourceText": "Break language barriers in job hunting with AI-powered multilingual resumes and interview prep.",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "17c512b81d70",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 15,
+        "column": 12
+      }
+    },
+    "2ba9647026de": {
+      "type": "content",
+      "sourceText": "Product",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "2ba9647026de",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 23,
+        "column": 12
+      }
+    },
+    "3d03f0a1de7f": {
+      "type": "content",
+      "sourceText": "Job Discovery",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "3d03f0a1de7f",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 26,
+        "column": 16
+      }
+    },
+    "5961d09a2720": {
+      "type": "content",
+      "sourceText": "Resume Builder",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "5961d09a2720",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 31,
+        "column": 16
+      }
+    },
+    "452b971a6f9b": {
+      "type": "content",
+      "sourceText": "Interview Prep",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "452b971a6f9b",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 36,
+        "column": 16
+      }
+    },
+    "1143702b803f": {
+      "type": "content",
+      "sourceText": "Application Tracker",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "1143702b803f",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 41,
+        "column": 16
+      }
+    },
+    "bf1faac91d3f": {
+      "type": "content",
+      "sourceText": "Supported Languages",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "bf1faac91d3f",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 50,
+        "column": 12
+      }
+    },
+    "6f9c5d17bdaf": {
+      "type": "content",
+      "sourceText": "🇺🇸 English",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "6f9c5d17bdaf",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 52,
+        "column": 14
+      }
+    },
+    "fed75604491c": {
+      "type": "content",
+      "sourceText": "🇪🇸 Español",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "fed75604491c",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 53,
+        "column": 14
+      }
+    },
+    "b5f0d9d53d9f": {
+      "type": "content",
+      "sourceText": "🇩🇪 Deutsch",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "b5f0d9d53d9f",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 54,
+        "column": 14
+      }
+    },
+    "4b6e0fa46c0f": {
+      "type": "content",
+      "sourceText": "🇫🇷 Français",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "4b6e0fa46c0f",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 55,
+        "column": 14
+      }
+    },
+    "6504e398a48a": {
+      "type": "content",
+      "sourceText": "🇯🇵 日本語",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "6504e398a48a",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 56,
+        "column": 14
+      }
+    },
+    "8a10146b4450": {
+      "type": "content",
+      "sourceText": "Legal",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "8a10146b4450",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 62,
+        "column": 12
+      }
+    },
+    "1714c4667477": {
+      "type": "content",
+      "sourceText": "Privacy Policy",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "1714c4667477",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 65,
+        "column": 16
+      }
+    },
+    "f4c16874cd4c": {
+      "type": "content",
+      "sourceText": "Terms of Service",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "f4c16874cd4c",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 70,
+        "column": 16
+      }
+    },
+    "9a6327c0666c": {
+      "type": "content",
+      "sourceText": "Contact",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "9a6327c0666c",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 75,
+        "column": 16
+      }
+    },
+    "1d5e0d206574": {
+      "type": "content",
+      "sourceText": "© 2026 GlobalHire AI. Built with ❤️ for the Lingo.dev Hackathon.",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "1d5e0d206574",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 84,
+        "column": 10
+      }
+    },
+    "916f5cb04a23": {
+      "type": "content",
+      "sourceText": "Powered by <a0>Lingo.dev </a0> , <a1>Supabase </a1> , and <a2>OpenRouter AI </a2>",
+      "context": {
+        "componentName": "Footer",
+        "filePath": "../components/layout/footer.tsx"
+      },
+      "hash": "916f5cb04a23",
+      "location": {
+        "filePath": "../components/layout/footer.tsx",
+        "line": 88,
+        "column": 10
+      }
+    },
+    "4cc25f9c9366": {
+      "type": "metadata",
+      "sourceText": "Find Jobs - GlobalHire AI",
+      "context": {
+        "fieldPath": "title",
+        "filePath": "jobs/page.tsx"
+      },
+      "hash": "4cc25f9c9366",
+      "location": {
+        "filePath": "jobs/page.tsx",
+        "line": 8,
+        "column": 9
+      }
+    },
+    "37f94968515f": {
+      "type": "metadata",
+      "sourceText": "Discover international developer jobs with auto-translated descriptions",
+      "context": {
+        "fieldPath": "description",
+        "filePath": "jobs/page.tsx"
+      },
+      "hash": "37f94968515f",
+      "location": {
+        "filePath": "jobs/page.tsx",
+        "line": 10,
+        "column": 4
+      }
+    },
+    "d3d408dea1b5": {
+      "type": "content",
+      "sourceText": "Discover Jobs Worldwide",
+      "context": {
+        "componentName": "JobsPage",
+        "filePath": "jobs/page.tsx"
+      },
+      "hash": "d3d408dea1b5",
+      "location": {
+        "filePath": "jobs/page.tsx",
+        "line": 47,
+        "column": 8
+      }
+    },
+    "29d0c9a3a06f": {
+      "type": "content",
+      "sourceText": "Find developer jobs from any country. Job descriptions are automatically translated to your preferred language.",
+      "context": {
+        "componentName": "JobsPage",
+        "filePath": "jobs/page.tsx"
+      },
+      "hash": "29d0c9a3a06f",
+      "location": {
+        "filePath": "jobs/page.tsx",
+        "line": 48,
+        "column": 8
+      }
+    },
+    "0ac8b561d936": {
+      "type": "content",
+      "sourceText": "No jobs found",
+      "context": {
+        "componentName": "JobsList",
+        "filePath": "jobs/jobs-list.tsx"
+      },
+      "hash": "0ac8b561d936",
+      "location": {
+        "filePath": "jobs/jobs-list.tsx",
+        "line": 138,
+        "column": 8
+      }
+    },
+    "ec8ea4926eb9": {
+      "type": "content",
+      "sourceText": "Try adjusting your search filters or try a different query.",
+      "context": {
+        "componentName": "JobsList",
+        "filePath": "jobs/jobs-list.tsx"
+      },
+      "hash": "ec8ea4926eb9",
+      "location": {
+        "filePath": "jobs/jobs-list.tsx",
+        "line": 139,
+        "column": 8
+      }
+    },
+    "f4df9512c142": {
+      "type": "content",
+      "sourceText": "Found {expression0} jobs",
+      "context": {
+        "componentName": "JobsList",
+        "filePath": "jobs/jobs-list.tsx"
+      },
+      "hash": "f4df9512c142",
+      "location": {
+        "filePath": "jobs/jobs-list.tsx",
+        "line": 150,
+        "column": 8
+      }
+    },
+    "c66eb9a0afa4": {
+      "type": "content",
+      "sourceText": "Translating...",
+      "context": {
+        "componentName": "JobsList",
+        "filePath": "jobs/jobs-list.tsx"
+      },
+      "hash": "c66eb9a0afa4",
+      "location": {
+        "filePath": "jobs/jobs-list.tsx",
+        "line": 161,
+        "column": 14
+      }
+    },
+    "11e33672b8c1": {
+      "type": "content",
+      "sourceText": "Previous",
+      "context": {
+        "componentName": "JobsList",
+        "filePath": "jobs/jobs-list.tsx"
+      },
+      "hash": "11e33672b8c1",
+      "location": {
+        "filePath": "jobs/jobs-list.tsx",
+        "line": 184,
+        "column": 8
+      }
+    },
+    "2e15c2914794": {
+      "type": "content",
+      "sourceText": "Page {page}",
+      "context": {
+        "componentName": "JobsList",
+        "filePath": "jobs/jobs-list.tsx"
+      },
+      "hash": "2e15c2914794",
+      "location": {
+        "filePath": "jobs/jobs-list.tsx",
+        "line": 191,
+        "column": 8
+      }
+    },
+    "4531798553f1": {
+      "type": "content",
+      "sourceText": "Next",
+      "context": {
+        "componentName": "JobsList",
+        "filePath": "jobs/jobs-list.tsx"
+      },
+      "hash": "4531798553f1",
+      "location": {
+        "filePath": "jobs/jobs-list.tsx",
+        "line": 194,
+        "column": 8
+      }
+    },
+    "a50caf2aee12": {
+      "type": "content",
+      "sourceText": "Search Jobs",
+      "context": {
+        "componentName": "JobFilters",
+        "filePath": "jobs/job-filters.tsx"
+      },
+      "hash": "a50caf2aee12",
+      "location": {
+        "filePath": "jobs/job-filters.tsx",
+        "line": 65,
+        "column": 8
+      }
+    },
+    "b272b895252b": {
+      "type": "content",
+      "sourceText": "Keywords",
+      "context": {
+        "componentName": "JobFilters",
+        "filePath": "jobs/job-filters.tsx"
+      },
+      "hash": "b272b895252b",
+      "location": {
+        "filePath": "jobs/job-filters.tsx",
+        "line": 73,
+        "column": 10
+      }
+    },
+    "a61683e2fbd7": {
+      "type": "attribute",
+      "sourceText": "e.g., React Developer",
+      "context": {
+        "attributeName": "placeholder",
+        "componentName": "JobFilters",
+        "filePath": "jobs/job-filters.tsx"
+      },
+      "hash": "a61683e2fbd7",
+      "location": {
+        "filePath": "jobs/job-filters.tsx",
+        "line": 74,
+        "column": 10
+      }
+    },
+    "dc48364a4e59": {
+      "type": "content",
+      "sourceText": "Location",
+      "context": {
+        "componentName": "JobFilters",
+        "filePath": "jobs/job-filters.tsx"
+      },
+      "hash": "dc48364a4e59",
+      "location": {
+        "filePath": "jobs/job-filters.tsx",
+        "line": 85,
+        "column": 10
+      }
+    },
+    "5e7c89f7824d": {
+      "type": "attribute",
+      "sourceText": "Select location",
+      "context": {
+        "attributeName": "placeholder",
+        "componentName": "JobFilters",
+        "filePath": "jobs/job-filters.tsx"
+      },
+      "hash": "5e7c89f7824d",
+      "location": {
+        "filePath": "jobs/job-filters.tsx",
+        "line": 91,
+        "column": 14
+      }
+    },
+    "0cfc32b7e13e": {
+      "type": "content",
+      "sourceText": "Job Type",
+      "context": {
+        "componentName": "JobFilters",
+        "filePath": "jobs/job-filters.tsx"
+      },
+      "hash": "0cfc32b7e13e",
+      "location": {
+        "filePath": "jobs/job-filters.tsx",
+        "line": 105,
+        "column": 10
+      }
+    },
+    "abe8acad08a3": {
+      "type": "attribute",
+      "sourceText": "Select type",
+      "context": {
+        "attributeName": "placeholder",
+        "componentName": "JobFilters",
+        "filePath": "jobs/job-filters.tsx"
+      },
+      "hash": "abe8acad08a3",
+      "location": {
+        "filePath": "jobs/job-filters.tsx",
+        "line": 111,
+        "column": 14
+      }
+    },
+    "1d5a2b4ed362": {
+      "type": "content",
+      "sourceText": "Search",
+      "context": {
+        "componentName": "JobFilters",
+        "filePath": "jobs/job-filters.tsx"
+      },
+      "hash": "1d5a2b4ed362",
+      "location": {
+        "filePath": "jobs/job-filters.tsx",
+        "line": 125,
+        "column": 10
+      }
+    },
+    "218c5e6e2b5f": {
+      "type": "content",
+      "sourceText": "Reset Filters",
+      "context": {
+        "componentName": "JobFilters",
+        "filePath": "jobs/job-filters.tsx"
+      },
+      "hash": "218c5e6e2b5f",
+      "location": {
+        "filePath": "jobs/job-filters.tsx",
+        "line": 129,
+        "column": 10
+      }
+    },
+    "6103e32a7f87": {
+      "type": "content",
+      "sourceText": "Popular Searches",
+      "context": {
+        "componentName": "JobFilters",
+        "filePath": "jobs/job-filters.tsx"
+      },
+      "hash": "6103e32a7f87",
+      "location": {
+        "filePath": "jobs/job-filters.tsx",
+        "line": 136,
+        "column": 10
+      }
+    },
+    "6e182df4df8f": {
+      "type": "content",
+      "sourceText": "Translated",
+      "context": {
+        "componentName": "JobCard",
+        "filePath": "jobs/job-card.tsx"
+      },
+      "hash": "6e182df4df8f",
+      "location": {
+        "filePath": "jobs/job-card.tsx",
+        "line": 117,
+        "column": 16
+      }
+    },
+    "c7ed25407dbe": {
+      "type": "content",
+      "sourceText": "View Details",
+      "context": {
+        "componentName": "JobCard",
+        "filePath": "jobs/job-card.tsx"
+      },
+      "hash": "c7ed25407dbe",
+      "location": {
+        "filePath": "jobs/job-card.tsx",
+        "line": 180,
+        "column": 12
+      }
+    },
+    "e0482f565cab": {
+      "type": "content",
+      "sourceText": "Generate Resume",
+      "context": {
+        "componentName": "JobCard",
+        "filePath": "jobs/job-card.tsx"
+      },
+      "hash": "e0482f565cab",
+      "location": {
+        "filePath": "jobs/job-card.tsx",
+        "line": 183,
+        "column": 12
+      }
+    },
+    "983262cac21b": {
+      "type": "content",
+      "sourceText": "Apply",
+      "context": {
+        "componentName": "JobCard",
+        "filePath": "jobs/job-card.tsx"
+      },
+      "hash": "983262cac21b",
+      "location": {
+        "filePath": "jobs/job-card.tsx",
+        "line": 189,
+        "column": 12
+      }
+    },
+    "b80ba224231f": {
+      "type": "metadata",
+      "sourceText": "AI Interview Prep - GlobalHire AI",
+      "context": {
+        "fieldPath": "title",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "b80ba224231f",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 14,
+        "column": 9
+      }
+    },
+    "b9766bdc9913": {
+      "type": "metadata",
+      "sourceText": "Practice multilingual AI-powered interviews for your target jobs",
+      "context": {
+        "fieldPath": "description",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "b9766bdc9913",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 16,
+        "column": 4
+      }
+    },
+    "63fe087a7c4e": {
+      "type": "content",
+      "sourceText": "AI Interview Prep",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "63fe087a7c4e",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 23,
+        "column": 8
+      }
+    },
+    "b52c32628aed": {
+      "type": "content",
+      "sourceText": "Practice interviews with our AI in any language. Get real-time feedback and improve your responses.",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "b52c32628aed",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 24,
+        "column": 8
+      }
+    },
+    "42ab0be530c7": {
+      "type": "content",
+      "sourceText": "Start New Interview",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "42ab0be530c7",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 34,
+        "column": 12
+      }
+    },
+    "30398206c63b": {
+      "type": "content",
+      "sourceText": "Practice for a specific job position",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "30398206c63b",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 38,
+        "column": 12
+      }
+    },
+    "8762895448f5": {
+      "type": "content",
+      "sourceText": "Choose a job from your saved jobs or enter a custom position. Our AI will conduct a realistic interview.",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "8762895448f5",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 43,
+        "column": 12
+      }
+    },
+    "c5271f2dfe71": {
+      "type": "content",
+      "sourceText": "Start Interview",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "c5271f2dfe71",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 48,
+        "column": 14
+      }
+    },
+    "a826033811df": {
+      "type": "content",
+      "sourceText": "Interview History",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "a826033811df",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 56,
+        "column": 12
+      }
+    },
+    "08295d1c395f": {
+      "type": "content",
+      "sourceText": "Review your past practice sessions",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "08295d1c395f",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 60,
+        "column": 12
+      }
+    },
+    "838e3e735b69": {
+      "type": "content",
+      "sourceText": "Access transcripts, feedback, and improvement suggestions from your previous interviews.",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "838e3e735b69",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 63,
+        "column": 12
+      }
+    },
+    "7737540d2696": {
+      "type": "content",
+      "sourceText": "View History",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "7737540d2696",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 68,
+        "column": 14
+      }
+    },
+    "df05f0ca82de": {
+      "type": "content",
+      "sourceText": "Multilingual Support",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "df05f0ca82de",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 76,
+        "column": 12
+      }
+    },
+    "295cf28b79bc": {
+      "type": "content",
+      "sourceText": "Practice in 5+ languages",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "295cf28b79bc",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 80,
+        "column": 12
+      }
+    },
+    "3637c3db7a3f": {
+      "type": "content",
+      "sourceText": "Practice interviews in English, German, French, Spanish, or Japanese. Speak in your language, respond in theirs.",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "3637c3db7a3f",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 83,
+        "column": 12
+      }
+    },
+    "a3a987b44340": {
+      "type": "content",
+      "sourceText": "🇺🇸",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "a3a987b44340",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 88,
+        "column": 14
+      }
+    },
+    "3df972c46b01": {
+      "type": "content",
+      "sourceText": "🇩🇪",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "3df972c46b01",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 89,
+        "column": 14
+      }
+    },
+    "686833bfce9e": {
+      "type": "content",
+      "sourceText": "🇫🇷",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "686833bfce9e",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 90,
+        "column": 14
+      }
+    },
+    "644839d8df7d": {
+      "type": "content",
+      "sourceText": "🇪🇸",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "644839d8df7d",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 91,
+        "column": 14
+      }
+    },
+    "c31cbb886824": {
+      "type": "content",
+      "sourceText": "🇯🇵",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "c31cbb886824",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 92,
+        "column": 14
+      }
+    },
+    "e88930c8a924": {
+      "type": "content",
+      "sourceText": "How It Works",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "e88930c8a924",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 100,
+        "column": 8
+      }
+    },
+    "0356b700c746": {
+      "type": "content",
+      "sourceText": "Interview Tips",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "0356b700c746",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 145,
+        "column": 8
+      }
+    },
+    "6a92fda73248": {
+      "type": "content",
+      "sourceText": "Before the Interview",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "6a92fda73248",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 149,
+        "column": 14
+      }
+    },
+    "0a5a0658c045": {
+      "type": "content",
+      "sourceText": "Research the company culture and values",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "0a5a0658c045",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 153,
+        "column": 16
+      }
+    },
+    "f0731aae940e": {
+      "type": "content",
+      "sourceText": "Review the job description thoroughly",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "f0731aae940e",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 154,
+        "column": 16
+      }
+    },
+    "f39199bcc56b": {
+      "type": "content",
+      "sourceText": "Prepare examples using the STAR method",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "f39199bcc56b",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 155,
+        "column": 16
+      }
+    },
+    "f1002bea2c0d": {
+      "type": "content",
+      "sourceText": "Practice common questions in your target language",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "f1002bea2c0d",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 156,
+        "column": 16
+      }
+    },
+    "a9538720652c": {
+      "type": "content",
+      "sourceText": "During the Interview",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "a9538720652c",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 162,
+        "column": 14
+      }
+    },
+    "45b0442bb8a5": {
+      "type": "content",
+      "sourceText": "Take a moment to think before answering",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "45b0442bb8a5",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 166,
+        "column": 16
+      }
+    },
+    "c9d97f39da4c": {
+      "type": "content",
+      "sourceText": "Use specific examples and metrics",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "c9d97f39da4c",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 167,
+        "column": 16
+      }
+    },
+    "cdf4f0ead447": {
+      "type": "content",
+      "sourceText": "Ask for clarification if needed",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "cdf4f0ead447",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 168,
+        "column": 16
+      }
+    },
+    "8d8225be44b8": {
+      "type": "content",
+      "sourceText": "Show enthusiasm for the role",
+      "context": {
+        "componentName": "InterviewPage",
+        "filePath": "interview/page.tsx"
+      },
+      "hash": "8d8225be44b8",
+      "location": {
+        "filePath": "interview/page.tsx",
+        "line": 169,
+        "column": 16
+      }
+    },
+    "9613770de39e": {
+      "type": "metadata",
+      "sourceText": "Application Tracker - GlobalHire AI",
+      "context": {
+        "fieldPath": "title",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "9613770de39e",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 23,
+        "column": 9
+      }
+    },
+    "6a22b0f337c1": {
+      "type": "metadata",
+      "sourceText": "Track your job applications and their status",
+      "context": {
+        "fieldPath": "description",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "6a22b0f337c1",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 24,
+        "column": 15
+      }
+    },
+    "967858a46ec1": {
+      "type": "content",
+      "sourceText": "Application Tracker",
+      "context": {
+        "componentName": "ApplicationsPage",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "967858a46ec1",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 103,
+        "column": 10
+      }
+    },
+    "bfef1713d7e6": {
+      "type": "content",
+      "sourceText": "Track your job applications and stay organized",
+      "context": {
+        "componentName": "ApplicationsPage",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "bfef1713d7e6",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 104,
+        "column": 10
+      }
+    },
+    "d2b02fa77a05": {
+      "type": "content",
+      "sourceText": "Add Application",
+      "context": {
+        "componentName": "ApplicationsPage",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "d2b02fa77a05",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 109,
+        "column": 10
+      }
+    },
+    "fdc66e3a0588": {
+      "type": "content",
+      "sourceText": "Total Applications",
+      "context": {
+        "componentName": "ApplicationsPage",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "fdc66e3a0588",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 120,
+        "column": 12
+      }
+    },
+    "a192431ab493": {
+      "type": "content",
+      "sourceText": "Applied",
+      "context": {
+        "componentName": "ApplicationsPage",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "a192431ab493",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 154,
+        "column": 10
+      }
+    },
+    "c7c9b680082d": {
+      "type": "content",
+      "sourceText": "Interviewing",
+      "context": {
+        "componentName": "ApplicationsPage",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "c7c9b680082d",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 155,
+        "column": 10
+      }
+    },
+    "b773e28f6f62": {
+      "type": "content",
+      "sourceText": "Offers",
+      "context": {
+        "componentName": "ApplicationsPage",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "b773e28f6f62",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 156,
+        "column": 10
+      }
+    },
+    "c0fa3ffa4d54": {
+      "type": "content",
+      "sourceText": "All",
+      "context": {
+        "componentName": "ApplicationsPage",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "c0fa3ffa4d54",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 153,
+        "column": 10
+      }
+    },
+    "9307fc84a7c0": {
+      "type": "content",
+      "sourceText": "Rejected",
+      "context": {
+        "componentName": "ApplicationsPage",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "9307fc84a7c0",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 157,
+        "column": 10
+      }
+    },
+    "1190f7c3e0c8": {
+      "type": "content",
+      "sourceText": "{expression0} • {expression1}",
+      "context": {
+        "componentName": "ApplicationCard",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "1190f7c3e0c8",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 209,
+        "column": 12
+      }
+    },
+    "dccb77f95aa7": {
+      "type": "content",
+      "sourceText": "Applied: {expression0}",
+      "context": {
+        "componentName": "ApplicationCard",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "dccb77f95aa7",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 226,
+        "column": 12
+      }
+    },
+    "31b6494d2869": {
+      "type": "content",
+      "sourceText": "Updated: {expression0}",
+      "context": {
+        "componentName": "ApplicationCard",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "31b6494d2869",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 227,
+        "column": 12
+      }
+    },
+    "1efa683c9b8c": {
+      "type": "content",
+      "sourceText": "View Details",
+      "context": {
+        "componentName": "ApplicationCard",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "1efa683c9b8c",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 235,
+        "column": 12
+      }
+    },
+    "7ebe30113b85": {
+      "type": "content",
+      "sourceText": "Update Status",
+      "context": {
+        "componentName": "ApplicationCard",
+        "filePath": "applications/page.tsx"
+      },
+      "hash": "7ebe30113b85",
+      "location": {
+        "filePath": "applications/page.tsx",
+        "line": 237,
+        "column": 10
+      }
+    },
+    "444a98b79fb2": {
+      "type": "metadata",
+      "sourceText": "Resume Builder - GlobalHire AI",
+      "context": {
+        "fieldPath": "title",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "444a98b79fb2",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 14,
+        "column": 9
+      }
+    },
+    "a589d8f5d1c0": {
+      "type": "metadata",
+      "sourceText": "Create AI-powered multilingual resumes tailored for any job",
+      "context": {
+        "fieldPath": "description",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "a589d8f5d1c0",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 15,
+        "column": 15
+      }
+    },
+    "9ead1c56b6ed": {
+      "type": "content",
+      "sourceText": "Resume Builder",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "9ead1c56b6ed",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 22,
+        "column": 8
+      }
+    },
+    "245ef66860a9": {
+      "type": "content",
+      "sourceText": "Create AI-powered resumes tailored for specific jobs, translated to any language, and optimized for ATS systems.",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "245ef66860a9",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 23,
+        "column": 8
+      }
+    },
+    "820bc9728f41": {
+      "type": "content",
+      "sourceText": "Create New Resume",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "820bc9728f41",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 33,
+        "column": 12
+      }
+    },
+    "35c742691720": {
+      "type": "content",
+      "sourceText": "Start fresh with your profile data",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "35c742691720",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 37,
+        "column": 12
+      }
+    },
+    "f0a6216c1c04": {
+      "type": "content",
+      "sourceText": "Enter your education, experience, and skills. Our AI will help you create a professional resume.",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "f0a6216c1c04",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 42,
+        "column": 12
+      }
+    },
+    "da50edfa40f3": {
+      "type": "content",
+      "sourceText": "Get Started",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "da50edfa40f3",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 47,
+        "column": 14
+      }
+    },
+    "932fb62a5a6d": {
+      "type": "content",
+      "sourceText": "Generate for a Job",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "932fb62a5a6d",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 55,
+        "column": 12
+      }
+    },
+    "eb17695af4e9": {
+      "type": "content",
+      "sourceText": "Tailor your resume for a specific position",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "eb17695af4e9",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 59,
+        "column": 12
+      }
+    },
+    "dcee2ecd6acc": {
+      "type": "content",
+      "sourceText": "Select a job from your saved jobs or paste a job description. AI will optimize your resume.",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "dcee2ecd6acc",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 64,
+        "column": 12
+      }
+    },
+    "e81eaee8d6a0": {
+      "type": "content",
+      "sourceText": "Generate Resume",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "e81eaee8d6a0",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 69,
+        "column": 14
+      }
+    },
+    "795cc1e5cfba": {
+      "type": "content",
+      "sourceText": "Resume History",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "795cc1e5cfba",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 77,
+        "column": 12
+      }
+    },
+    "844539378614": {
+      "type": "content",
+      "sourceText": "View and manage your saved resumes",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "844539378614",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 81,
+        "column": 12
+      }
+    },
+    "175aef80fa83": {
+      "type": "content",
+      "sourceText": "Access all your previously generated resumes. Download PDFs or create new versions.",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "175aef80fa83",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 86,
+        "column": 12
+      }
+    },
+    "ea3ed39f5dd1": {
+      "type": "content",
+      "sourceText": "View History",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "ea3ed39f5dd1",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 91,
+        "column": 14
+      }
+    },
+    "b5e8eb9d1c45": {
+      "type": "content",
+      "sourceText": "Features",
+      "context": {
+        "componentName": "ResumePage",
+        "filePath": "resume/page.tsx"
+      },
+      "hash": "b5e8eb9d1c45",
+      "location": {
+        "filePath": "resume/page.tsx",
+        "line": 99,
+        "column": 8
+      }
+    }
+  },
+  "stats": {
+    "totalEntries": 145,
+    "lastUpdated": "2026-02-02T15:56:28.480Z"
+  }
+}

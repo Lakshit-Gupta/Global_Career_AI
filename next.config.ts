@@ -51,12 +51,14 @@ const nextConfig: NextConfig = {
 
 export default async function (): Promise<NextConfig> {
   return await withLingo(nextConfig, {
-    sourceRoot: './src/app',
+    sourceRoot: './src',
     sourceLocale: 'en',
     targetLocales: ['es', 'de', 'fr', 'ja'],
     models: 'lingo.dev',
     dev: {
-      usePseudotranslator: true, // Fast fake translations in development
+      usePseudotranslator: true,
+      translationServerStartPort: 60000,
+      translationServerUrl: 'http://localhost:60000',
     },
   });
 }

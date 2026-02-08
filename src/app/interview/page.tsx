@@ -99,44 +99,58 @@ export default function InterviewPage() {
       <div className="mt-12">
         <h2 className="mb-6 text-2xl font-bold">How It Works</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              icon: <MessageSquare className="h-8 w-8 text-primary" />,
-              title: "1. Choose a Job",
-              description:
-                "Select from your saved jobs or describe the position you're preparing for",
-            },
-            {
-              icon: <Globe className="h-8 w-8 text-primary" />,
-              title: "2. Set Languages",
-              description:
-                "Choose your comfortable language and the interviewer's language",
-            },
-            {
-              icon: <Mic className="h-8 w-8 text-primary" />,
-              title: "3. Practice",
-              description:
-                "Answer questions in real-time. Use text or voice (coming soon)",
-            },
-            {
-              icon: <History className="h-8 w-8 text-primary" />,
-              title: "4. Get Feedback",
-              description:
-                "Receive detailed feedback on your responses and areas to improve",
-            },
-          ].map((step) => (
-            <Card key={step.title}>
-              <CardHeader>
-                <div className="mb-2">{step.icon}</div>
-                <CardTitle className="text-lg">{step.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  {step.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+          <Card>
+            <CardHeader>
+              <div className="mb-2">
+                <MessageSquare className="h-8 w-8 text-primary" />
+              </div>
+              <CardTitle className="text-lg">1. Choose a Job</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Select from your saved jobs or describe the position you're preparing for
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <div className="mb-2">
+                <Globe className="h-8 w-8 text-primary" />
+              </div>
+              <CardTitle className="text-lg">2. Set Languages</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Choose your comfortable language and the interviewer's language
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <div className="mb-2">
+                <Mic className="h-8 w-8 text-primary" />
+              </div>
+              <CardTitle className="text-lg">3. Practice</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Answer questions in real-time. Use text or voice (coming soon)
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <div className="mb-2">
+                <History className="h-8 w-8 text-primary" />
+              </div>
+              <CardTitle className="text-lg">4. Get Feedback</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Receive detailed feedback on your responses and areas to improve
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </div>
 

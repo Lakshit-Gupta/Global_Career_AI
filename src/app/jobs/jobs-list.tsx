@@ -6,7 +6,7 @@ import { JobCard } from "./job-card";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { translate } from "@/lib/translate";
-import { getUserLanguage } from "@/lib/translate";
+import { useLingoContext } from "@lingo.dev/compiler/react";
 import { Loader2 } from "lucide-react";
 
 interface Job {
@@ -30,7 +30,7 @@ export function JobsList() {
   const [isLoading, setIsLoading] = useState(true);
   const [isTranslating, setIsTranslating] = useState(false);
   const [page, setPage] = useState(1);
-  const [userLang, setUserLang] = useState("en");
+  const { locale: userLang } = useLingoContext();
   const searchParams = useSearchParams();
 
   const fetchJobs = useCallback(async () => {
@@ -99,11 +99,6 @@ export function JobsList() {
       setIsTranslating(false);
     }
   };
-
-  useEffect(() => {
-    const lang = getUserLanguage();
-    setUserLang(lang);
-  }, []);
 
   useEffect(() => {
     fetchJobs();

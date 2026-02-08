@@ -1,277 +1,261 @@
-import { NextResponse } from "next/server";
-import { callLLM } from "@/lib/llm";
-import { createClient } from "@/lib/supabase/server";
-
-// Generate resume with LLM and translate with Lingo.dev
+import { NextResponse } from 'next/server';
+import { createServerClient } from '@/lib/supabase/server';
+import { generateText } from '@/lib/ai/vertex';
+import { translate } from 'lingo.dev';
 
 export async function POST(request: Request) {
+  const supabase = createServerClient();
+
+  // Get current user
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const { jobId, targetLanguage = 'en' } = await request.json();
+
   try {
-    const { jobDescription, targetLanguage } = await request.json();
+    // 1. Fetch user profile data
+    const { data: profile } = await supabase
+      .from('user_profiles')
+      .select('*')
+      .eq('user_id', user.id)
+      .single();
 
-    if (!jobDescription) {
-      return NextResponse.json(
-        { error: "Job description is required" },
-        { status: 400 }
-      );
+    const { data: experiences } = await supabase
+      .from('experience')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('start_date', { ascending: false });
+
+    const { data: education } = await supabase
+      .from('education')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('start_date', { ascending: false });
+
+    const { data: profileData } = await supabase
+      .from('profiles')
+      .select('full_name, email, phone, location')
+      .eq('id', user.id)
+      .single();
+
+    // 2. Fetch job details
+    const { data: job } = await supabase
+      .from('jobs')
+      .select('*')
+      .eq('id', jobId)
+      .single();
+
+    if (!job) {
+      return NextResponse.json({ error: 'Job not found' }, { status: 404 });
     }
 
-    const supabase = await createClient();
+    // 3. Generate resume with AI
+    const prompt = `You are a professional resume writer. Generate a tailored resume for this job application.
 
-    // Get user profile if authenticated
-    let userData = null;
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
+JOB DETAILS:
+Title: ${job.title}
+Company: ${job.company}
+Description: ${job.description}
+Requirements: ${job.requirements || 'Not specified'}
 
-    if (user) {
-      const { data: profile } = await supabase
-        .from("user_profiles")
-        .select("*")
-        .eq("user_id", user.id)
-        .single();
+USER PROFILE:
+Name: ${profileData?.full_name || 'Not provided'}
+Summary: ${profile?.summary || 'Not provided'}
+Skills: ${profile?.skills?.join(', ') || 'None listed'}
 
-      if (profile) {
-        userData = profile;
-      }
-    }
+WORK EXPERIENCE:
+${experiences
+  ?.map(
+    (exp) => `
+- ${exp.position} at ${exp.company} (${exp.start_date} - ${exp.is_current ? 'Present' : exp.end_date})
+  Location: ${exp.location}
+  ${exp.description}
+`
+  )
+  .join('\n')}
 
-    // Generate resume with LLM
-    const responseText = await callLLM({
-      system: `You are an expert resume writer. Generate a professional, ATS-optimized resume tailored for the job description. Return ONLY valid JSON, no markdown.`,
-      messages: [
-        {
-          role: "user",
-          content: `Generate a professional resume for this job:
+EDUCATION:
+${education
+  ?.map(
+    (edu) => `
+- ${edu.degree} in ${edu.field_of_study} from ${edu.institution}
+  ${edu.start_date} - ${edu.end_date}
+  ${edu.description || ''}
+`
+  )
+  .join('\n')}
 
-Job Description:
-${jobDescription}
+INSTRUCTIONS:
+1. Create a professional resume tailored specifically for this job
+2. Highlight relevant experience and skills
+3. Use strong action verbs and quantify achievements where possible
+4. Keep it concise and ATS-friendly
+5. Return ONLY valid JSON in this exact format (no markdown, no extra text):
 
-${userData ? `User's existing data:\n${JSON.stringify(userData, null, 2)}` : "Create a compelling profile based on the job requirements."}
-
-Return ONLY a JSON object with this exact structure:
 {
-  "summary": "2-3 sentence professional summary matching the job",
+  "summary": "A compelling professional summary (2-3 sentences)",
   "experience": [
     {
-      "title": "Job Title",
       "company": "Company Name",
-      "duration": "Jan 2020 - Present",
-      "bullets": ["Achievement with metrics", "Another achievement"]
+      "position": "Job Title",
+      "duration": "Start Date - End Date",
+      "achievements": ["Achievement 1", "Achievement 2", "Achievement 3"]
     }
   ],
   "skills": ["Skill 1", "Skill 2", "Skill 3"],
   "education": [
     {
       "degree": "Degree Name",
-      "school": "University Name",
-      "year": "2020"
+      "institution": "School Name",
+      "year": "Graduation Year"
     }
   ]
-}`,
-        },
-      ],
-      maxTokens: 2000,
-    });
+}`;
 
-    let resume;
+    const aiResponse = await generateText(prompt, 3000);
+
+    // Parse AI response
+    let resumeContent;
     try {
-      resume = JSON.parse(responseText);
-    } catch {
       // Try to extract JSON from response
-      const jsonMatch = responseText.match(/\{[\s\S]*\}/);
+      const jsonMatch = aiResponse.match(/\{[\s\S]*\}/);
       if (jsonMatch) {
-        resume = JSON.parse(jsonMatch[0]);
+        resumeContent = JSON.parse(jsonMatch[0]);
       } else {
-        throw new Error("Failed to parse resume JSON");
+        resumeContent = JSON.parse(aiResponse);
       }
+    } catch (parseError) {
+      console.error('Failed to parse AI response:', aiResponse);
+      return NextResponse.json(
+        { error: 'Failed to generate resume. Please try again.' },
+        { status: 500 }
+      );
     }
 
-    // Translate if not English
-    if (targetLanguage !== "en") {
-      resume = await translateResume(resume, targetLanguage);
+    // 4. Translate resume if needed
+    let finalResume = resumeContent;
+    if (targetLanguage !== 'en') {
+      finalResume = {
+        summary: await translate(resumeContent.summary, { to: targetLanguage }),
+        experience: await Promise.all(
+          resumeContent.experience.map(async (exp: any) => ({
+            ...exp,
+            position: await translate(exp.position, { to: targetLanguage }),
+            achievements: await Promise.all(
+              exp.achievements.map((ach: string) =>
+                translate(ach, { to: targetLanguage })
+              )
+            ),
+          }))
+        ),
+        skills: await Promise.all(
+          resumeContent.skills.map((skill: string) =>
+            translate(skill, { to: targetLanguage })
+          )
+        ),
+        education: await Promise.all(
+          resumeContent.education.map(async (edu: any) => ({
+            ...edu,
+            degree: await translate(edu.degree, { to: targetLanguage }),
+          }))
+        ),
+      };
     }
 
-    // Score the resume
-    const atsResult = await scoreResume(resume, jobDescription);
+    // 5. Calculate ATS score
+    const scorePrompt = `Rate this resume against the job requirements on a scale of 0-100.
 
-    // Auto-rewrite if score < 70 (up to 3 attempts)
+JOB REQUIREMENTS:
+${job.description}
+${job.requirements}
+
+RESUME:
+${JSON.stringify(finalResume, null, 2)}
+
+Return ONLY valid JSON in this format (no markdown):
+{
+  "score": 85,
+  "feedback": "Brief feedback on strengths and areas for improvement"
+}`;
+
+    const scoreResponse = await generateText(scorePrompt, 500);
+    const scoreMatch = scoreResponse.match(/\{[\s\S]*\}/);
+    const { score, feedback } = scoreMatch
+      ? JSON.parse(scoreMatch[0])
+      : { score: 75, feedback: 'Unable to generate detailed feedback' };
+
+    // 6. Rewrite if score < 70
     let attempts = 1;
-    let currentResume = resume;
-    let currentScore = atsResult.score;
+    let currentResume = finalResume;
+    let currentScore = score;
 
     while (currentScore < 70 && attempts < 3) {
-      const rewriteResult = await rewriteResume(
-        currentResume,
-        jobDescription,
-        atsResult.feedback,
-        targetLanguage
-      );
-      currentResume = rewriteResult.resume;
-      currentScore = rewriteResult.score;
+      const rewritePrompt = `Improve this resume based on the feedback to better match the job requirements.
+
+JOB:
+${job.title} at ${job.company}
+${job.description}
+
+CURRENT RESUME:
+${JSON.stringify(currentResume, null, 2)}
+
+FEEDBACK:
+${feedback}
+
+Return an improved resume in the same JSON format.`;
+
+      const rewriteResponse = await generateText(rewritePrompt, 3000);
+      const rewriteMatch = rewriteResponse.match(/\{[\s\S]*\}/);
+
+      if (rewriteMatch) {
+        currentResume = JSON.parse(rewriteMatch[0]);
+
+        // Recalculate score
+        const newScoreResponse = await generateText(scorePrompt, 500);
+        const newScoreMatch = newScoreResponse.match(/\{[\s\S]*\}/);
+        if (newScoreMatch) {
+          const newScoreData = JSON.parse(newScoreMatch[0]);
+          currentScore = newScoreData.score;
+        }
+      }
+
       attempts++;
     }
 
+    // 7. Save to database
+    const { data: savedResume, error: saveError } = await supabase
+      .from('resumes')
+      .insert({
+        user_id: user.id,
+        job_id: jobId,
+        title: `${job.title} at ${job.company}`,
+        content: currentResume,
+        target_language: targetLanguage,
+        ats_score: currentScore,
+        ats_feedback: feedback,
+        generation_attempts: attempts,
+      })
+      .select()
+      .single();
+
+    if (saveError) throw saveError;
+
     return NextResponse.json({
-      resume: currentResume,
-      ats: {
-        ...atsResult,
-        score: currentScore,
-      },
+      resume: savedResume,
+      score: currentScore,
+      feedback,
       attempts,
-      targetLanguage,
     });
-  } catch (error) {
-    console.error("Resume generation error:", error);
+  } catch (error: any) {
+    console.error('Resume generation error:', error);
     return NextResponse.json(
-      { error: "Failed to generate resume" },
+      { error: error.message || 'Failed to generate resume' },
       { status: 500 }
     );
   }
-}
-
-async function translateResume(
-  resume: Record<string, unknown>,
-  targetLanguage: string
-) {
-  // In production, use Lingo.dev SDK for translation
-  // For now, return with language indicator
-  const translate = async (text: string) => {
-    if (!process.env.LINGO_API_KEY) {
-      return `[${targetLanguage.toUpperCase()}] ${text}`;
-    }
-
-    try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/translate`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text, from: "en", to: targetLanguage }),
-        }
-      );
-      const data = await response.json();
-      return data.translatedText || text;
-    } catch {
-      return text;
-    }
-  };
-
-  return {
-    summary: await translate(resume.summary as string),
-    experience: await Promise.all(
-      (resume.experience as Array<Record<string, unknown>>).map(async (exp) => ({
-        ...exp,
-        title: await translate(exp.title as string),
-        bullets: await Promise.all(
-          (exp.bullets as string[]).map((b) => translate(b))
-        ),
-      }))
-    ),
-    skills: await Promise.all(
-      (resume.skills as string[]).map((s) => translate(s))
-    ),
-    education: await Promise.all(
-      (resume.education as Array<Record<string, unknown>>).map(async (edu) => ({
-        ...edu,
-        degree: await translate(edu.degree as string),
-      }))
-    ),
-  };
-}
-
-async function scoreResume(
-  resume: Record<string, unknown>,
-  jobDescription: string
-) {
-  const responseText = await callLLM({
-    system:
-      "You are an ATS expert. Score resumes against job descriptions. Return ONLY valid JSON.",
-    messages: [
-      {
-        role: "user",
-        content: `Score this resume (0-100):
-
-Resume: ${JSON.stringify(resume)}
-
-Job: ${jobDescription}
-
-Return ONLY JSON:
-{
-  "score": 75,
-  "feedback": {
-    "strengths": ["strength 1"],
-    "improvements": ["improvement 1"],
-    "missingKeywords": ["keyword 1"]
-  },
-  "suggestions": ["suggestion 1"]
-}`,
-      },
-    ],
-    maxTokens: 1000,
-  });
-
-  try {
-    return JSON.parse(responseText);
-  } catch {
-    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
-    if (jsonMatch) {
-      return JSON.parse(jsonMatch[0]);
-    }
-    return {
-      score: 70,
-      feedback: { strengths: [], improvements: [], missingKeywords: [] },
-      suggestions: [],
-    };
-  }
-}
-
-async function rewriteResume(
-  resume: Record<string, unknown>,
-  jobDescription: string,
-  feedback: Record<string, unknown>,
-  targetLanguage: string
-) {
-  const responseText = await callLLM({
-    system:
-      "You are an expert resume writer. Improve the resume based on feedback. Return ONLY valid JSON.",
-    messages: [
-      {
-        role: "user",
-        content: `Improve this resume based on feedback:
-
-Current Resume: ${JSON.stringify(resume)}
-Job: ${jobDescription}
-Feedback: ${JSON.stringify(feedback)}
-
-Improve the resume to score higher. Return the same JSON structure.`,
-      },
-    ],
-    maxTokens: 2000,
-  });
-
-  let improvedResume;
-  try {
-    improvedResume = JSON.parse(responseText);
-  } catch {
-    const jsonMatch = responseText.match(/\{[\s\S]*\}/);
-    if (jsonMatch) {
-      improvedResume = JSON.parse(jsonMatch[0]);
-    } else {
-      improvedResume = resume;
-    }
-  }
-
-  // Translate if needed
-  if (targetLanguage !== "en") {
-    improvedResume = await translateResume(improvedResume, targetLanguage);
-  }
-
-  // Score the improved resume
-  const newScore = await scoreResume(improvedResume, jobDescription);
-
-  return {
-    resume: improvedResume,
-    score: newScore.score,
-    feedback: newScore.feedback,
-  };
 }

@@ -98,39 +98,46 @@ export default function ResumePage() {
       <div className="mt-12">
         <h2 className="mb-6 text-2xl font-bold">Features</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              title: "AI-Powered",
-              description:
-                "AI generates compelling content based on your experience",
-            },
-            {
-              title: "Multilingual",
-              description:
-                "Translate your resume to German, French, Spanish, Japanese, and more",
-            },
-            {
-              title: "ATS Optimized",
-              description:
-                "Get ATS scores and automatic rewrites if score is below 70%",
-            },
-            {
-              title: "PDF Export",
-              description:
-                "Download professional PDFs ready to submit to employers",
-            },
-          ].map((feature) => (
-            <Card key={feature.title}>
-              <CardHeader className="pb-2">
-                <CardTitle className="text-lg">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  {feature.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg">AI-Powered</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                AI generates compelling content based on your experience
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg">Multilingual</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Translate your resume to German, French, Spanish, Japanese, and more
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg">ATS Optimized</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Get ATS scores and automatic rewrites if score is below 70%
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg">PDF Export</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Download professional PDFs ready to submit to employers
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -18,11 +21,8 @@ import {
   XCircle,
   Calendar,
 } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Application Tracker - GlobalHire AI",
-  description: "Track your job applications and their status",
-};
+import { useLingoContext } from "@lingo.dev/compiler/react";
+import { translate } from "@/lib/translate";
 
 // Mock data - would come from API
 const mockApplications = [
@@ -79,15 +79,89 @@ const mockApplications = [
 ];
 
 const statusConfig = {
-  saved: { label: "Saved", color: "bg-gray-500", icon: Briefcase },
-  applied: { label: "Applied", color: "bg-blue-500", icon: Clock },
-  interviewing: { label: "Interviewing", color: "bg-yellow-500", icon: Calendar },
-  offer: { label: "Offer", color: "bg-green-500", icon: CheckCircle },
-  rejected: { label: "Rejected", color: "bg-red-500", icon: XCircle },
+  saved: { color: "bg-gray-500", icon: Briefcase },
+  applied: { color: "bg-blue-500", icon: Clock },
+  interviewing: { color: "bg-yellow-500", icon: Calendar },
+  offer: { color: "bg-green-500", icon: CheckCircle },
+  rejected: { color: "bg-red-500", icon: XCircle },
 };
 
+function StatusLabel({ status }: { status: string }) {
+  switch (status) {
+    case "saved":
+      return <>Saved</>;
+    case "applied":
+      return <>Applied</>;
+    case "interviewing":
+      return <>Interviewing</>;
+    case "offer":
+      return <>Offer</>;
+    case "rejected":
+      return <>Rejected</>;
+    default:
+      return <>{status}</>;
+  }
+}
+
+interface TranslatedApplication {
+  id: string;
+  job: {
+    title: string;
+    company: string;
+    location: string;
+  };
+  status: string;
+  appliedAt: string;
+  updatedAt: string;
+  notes?: string;
+  nextStep?: string;
+}
+
 export default function ApplicationsPage() {
-  const applications = mockApplications;
+  const { locale } = useLingoContext();
+  const [applications, setApplications] = useState<TranslatedApplication[]>(mockApplications);
+  const [isTranslating, setIsTranslating] = useState(false);
+
+  useEffect(() => {
+    if (locale !== "en") {
+      translateApplications();
+    } else {
+      setApplications(mockApplications);
+    }
+  }, [locale]);
+
+  const translateApplications = async () => {
+    setIsTranslating(true);
+    try {
+      const translated = await Promise.all(
+        mockApplications.map(async (app) => {
+          const [title, company, location, notes, nextStep] = await Promise.all([
+            translate(app.job.title, { from: "en", to: locale }),
+            translate(app.job.company, { from: "en", to: locale }),
+            translate(app.job.location, { from: "en", to: locale }),
+            app.notes ? translate(app.notes, { from: "en", to: locale }) : Promise.resolve(undefined),
+            app.nextStep ? translate(app.nextStep, { from: "en", to: locale }) : Promise.resolve(undefined),
+          ]);
+
+          return {
+            ...app,
+            job: {
+              title,
+              company,
+              location,
+            },
+            notes,
+            nextStep,
+          };
+        })
+      );
+      setApplications(translated);
+    } catch (error) {
+      console.error("Error translating applications:", error);
+    } finally {
+      setIsTranslating(false);
+    }
+  };
 
   const stats = {
     total: applications.length,
@@ -189,7 +263,7 @@ export default function ApplicationsPage() {
 function ApplicationCard({
   application,
 }: {
-  application: (typeof mockApplications)[0];
+  application: TranslatedApplication;
 }) {
   const config = statusConfig[application.status as keyof typeof statusConfig];
   const StatusIcon = config.icon;
@@ -203,7 +277,7 @@ function ApplicationCard({
               <h3 className="text-lg font-semibold">{application.job.title}</h3>
               <Badge className={config.color}>
                 <StatusIcon className="mr-1 h-3 w-3" />
-                {config.label}
+                <StatusLabel status={application.status} />
               </Badge>
             </div>
             <p className="mt-1 text-muted-foreground">

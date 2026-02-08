@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useLocale, setLocale } from "@lingo.dev/compiler/react";
+import { useLingoContext } from "@lingo.dev/compiler/react";
 
 const SUPPORTED_LANGUAGES = [
   { code: "en", name: "English", flag: "🇺🇸" },
@@ -18,10 +18,10 @@ const SUPPORTED_LANGUAGES = [
 ] as const;
 
 export function LanguageSwitcher() {
-  const locale = useLocale();
+  const { locale, setLocale } = useLingoContext();
 
   const handleLanguageChange = (value: string) => {
-    setLocale(value);
+    setLocale(value as any);
   };
 
   const currentLang = SUPPORTED_LANGUAGES.find((l) => l.code === locale);
