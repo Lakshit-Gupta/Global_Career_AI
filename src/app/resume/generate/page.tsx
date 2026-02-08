@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useAuth } from '@/components/providers/auth-provider';
 import { createClient } from '@/lib/supabase/client';
 import { Job } from '@/types';
 
-export default function GenerateResumePage() {
+function GenerateResumeContent() {
   const { user } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -242,5 +242,20 @@ export default function GenerateResumePage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function GenerateResumePage() {
+  return (
+    <Suspense fallback={
+      <div className="container mx-auto max-w-2xl px-4 py-8">
+        <div className="text-center">
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent"></div>
+          <p className="mt-4 text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    }>
+      <GenerateResumeContent />
+    </Suspense>
   );
 }

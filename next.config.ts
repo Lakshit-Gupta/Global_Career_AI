@@ -50,6 +50,12 @@ const nextConfig: NextConfig = {
 };
 
 export default async function (): Promise<NextConfig> {
+  // Disable Lingo.dev during production builds to avoid lock file conflicts
+  // It's only needed for development with live translation
+  if (process.env.NODE_ENV === 'production' || process.env.CI === 'true') {
+    return nextConfig;
+  }
+  
   return await withLingo(nextConfig, {
     sourceRoot: './src',
     sourceLocale: 'en',

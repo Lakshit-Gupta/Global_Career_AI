@@ -10275,3 +10275,13 @@
 2026-02-08T00:36:15.708Z [INFO] [Lingo.dev] ✅ Found existing translation server at http://127.0.0.1:60000, reusing it
 2026-02-08T00:37:30.050Z [DEBUG] [Lingo.dev] WebSocket client disconnected. Total clients: 0
 2026-02-08T00:37:31.075Z [DEBUG] [Lingo.dev] WebSocket client connected. Total clients: 1
+2026-02-08T01:08:11.244Z [INFO] [Lingo.dev] Port 60000 is in use, checking if it's a translation server...
+2026-02-08T01:08:11.253Z [INFO] [Lingo.dev] 📥 Received: GET /health
+2026-02-08T01:08:11.255Z [INFO] [Lingo.dev] 🔄 Processing: GET /health
+2026-02-08T01:08:11.256Z [DEBUG] [Lingo.dev] GET /health
+2026-02-08T01:08:11.258Z [INFO] [Lingo.dev] ✅ Found existing translation server at http://127.0.0.1:60000, reusing it
+2026-02-08T01:08:14.159Z [INFO] [Lingo.dev] Port 60000 is in use, checking if it's a translation server...
+2026-02-08T01:08:14.161Z [INFO] [Lingo.dev] 📥 Received: GET /health
+2026-02-08T01:08:14.163Z [INFO] [Lingo.dev] 🔄 Processing: GET /health
+2026-02-08T01:08:14.165Z [DEBUG] [Lingo.dev] GET /health
+2026-02-08T01:08:14.362Z [INFO] [Lingo.dev] ✅ Found existing translation server at http://127.0.0.1:60000, reusing it
