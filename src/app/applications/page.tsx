@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Metadata } from "next";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -120,18 +119,8 @@ interface TranslatedApplication {
 export default function ApplicationsPage() {
   const { locale } = useLingoContext();
   const [applications, setApplications] = useState<TranslatedApplication[]>(mockApplications);
-  const [isTranslating, setIsTranslating] = useState(false);
 
-  useEffect(() => {
-    if (locale !== "en") {
-      translateApplications();
-    } else {
-      setApplications(mockApplications);
-    }
-  }, [locale]);
-
-  const translateApplications = async () => {
-    setIsTranslating(true);
+  const translateApplications = useCallback(async () => {
     try {
       const translated = await Promise.all(
         mockApplications.map(async (app) => {
@@ -158,10 +147,16 @@ export default function ApplicationsPage() {
       setApplications(translated);
     } catch (error) {
       console.error("Error translating applications:", error);
-    } finally {
-      setIsTranslating(false);
     }
-  };
+  }, [locale]);
+
+  useEffect(() => {
+    if (locale !== "en") {
+      translateApplications();
+    } else {
+      setApplications(mockApplications);
+    }
+  }, [locale, translateApplications]);
 
   const stats = {
     total: applications.length,

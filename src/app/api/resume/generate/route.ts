@@ -129,7 +129,7 @@ INSTRUCTIONS:
       } else {
         resumeContent = JSON.parse(aiResponse);
       }
-    } catch (parseError) {
+    } catch {
       console.error('Failed to parse AI response:', aiResponse);
       return NextResponse.json(
         { error: 'Failed to generate resume. Please try again.' },

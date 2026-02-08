@@ -108,7 +108,7 @@ export default function InterviewPage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Select from your saved jobs or describe the position you're preparing for
+                Select from your saved jobs or describe the position you&apos;re preparing for
               </p>
             </CardContent>
           </Card>
@@ -121,7 +121,7 @@ export default function InterviewPage() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground">
-                Choose your comfortable language and the interviewer's language
+                Choose your comfortable language and the interviewer&apos;s language
               </p>
             </CardContent>
           </Card>

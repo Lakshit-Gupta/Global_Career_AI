@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useAuth } from '@/components/providers/auth-provider';
 import { createClient } from '@/lib/supabase/client';
@@ -19,17 +19,7 @@ export default function GenerateResumePage() {
 
   const supabase = createClient();
 
-  useEffect(() => {
-    if (!user) {
-      router.push('/auth/login');
-      return;
-    }
-    if (jobId) {
-      loadJob();
-    }
-  }, [user, jobId]);
-
-  async function loadJob() {
+  const loadJob = useCallback(async () => {
     const { data } = await supabase
       .from('jobs')
       .select('*')
@@ -41,7 +31,17 @@ export default function GenerateResumePage() {
       // Auto-detect job language and set as target
       setTargetLanguage(data.original_language || 'en');
     }
-  }
+  }, [jobId, supabase]);
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/auth/login');
+      return;
+    }
+    if (jobId) {
+      loadJob();
+    }
+  }, [user, jobId, router, loadJob]);
 
   async function handleGenerate() {
     setGenerating(true);

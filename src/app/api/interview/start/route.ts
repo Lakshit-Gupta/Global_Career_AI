@@ -55,8 +55,6 @@ export async function POST(request: Request) {
       maxTokens: 500,
     });
 
-    const greeting = greetingText;
-
     // Save session to database if user is authenticated
     if (user) {
       const { error } = await (supabase.from("interview_sessions") as any).insert({

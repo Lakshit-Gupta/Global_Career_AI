@@ -79,7 +79,7 @@ const statusConfig = {
 export default async function ApplicationDetailPage({
   params,
 }: ApplicationDetailPageProps) {
-  const { id: _id } = await params;
+  await params;
   const application = mockApplication;
   const config = statusConfig[application.status as keyof typeof statusConfig];
 
