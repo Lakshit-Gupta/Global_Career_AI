@@ -1,10 +1,15 @@
 import { NextResponse } from 'next/server';
-import { createServerClient } from '@/lib/supabase/server';
+import { createClient } from '@/lib/supabase/server';
 import { generateText } from '@/lib/ai/vertex';
-import { translate } from 'lingo.dev';
+import { translate } from '@/lib/translate';
+import type { Database } from '@/types/database';
+
+type Job = Database['public']['Tables']['jobs']['Row'];
+type UserProfile = Database['public']['Tables']['user_profiles']['Row'];
+type ResumeInsert = Database['public']['Tables']['resumes']['Insert'];
 
 export async function POST(request: Request) {
-  const supabase = createServerClient();
+  const supabase = await createClient();
 
   // Get current user
   const {
@@ -48,7 +53,7 @@ export async function POST(request: Request) {
       .from('jobs')
       .select('*')
       .eq('id', jobId)
-      .single();
+      .single() as { data: Job | null };
 
     if (!job) {
       return NextResponse.json({ error: 'Job not found' }, { status: 404 });
@@ -60,18 +65,18 @@ export async function POST(request: Request) {
 JOB DETAILS:
 Title: ${job.title}
 Company: ${job.company}
-Description: ${job.description}
-Requirements: ${job.requirements || 'Not specified'}
+Description: ${job.description || ''}
+Requirements: ${job.location || 'Not specified'}
 
 USER PROFILE:
-Name: ${profileData?.full_name || 'Not provided'}
-Summary: ${profile?.summary || 'Not provided'}
-Skills: ${profile?.skills?.join(', ') || 'None listed'}
+Name: ${(profileData as any)?.full_name || 'Not provided'}
+Summary: ${profile ? (profile as UserProfile).summary : 'Not provided'}
+Skills: ${profile ? (profile as UserProfile).skills?.join(', ') : 'None listed'}
 
 WORK EXPERIENCE:
 ${experiences
   ?.map(
-    (exp) => `
+    (exp: any) => `
 - ${exp.position} at ${exp.company} (${exp.start_date} - ${exp.is_current ? 'Present' : exp.end_date})
   Location: ${exp.location}
   ${exp.description}
@@ -82,7 +87,7 @@ ${experiences
 EDUCATION:
 ${education
   ?.map(
-    (edu) => `
+    (edu: any) => `
 - ${edu.degree} in ${edu.field_of_study} from ${edu.institution}
   ${edu.start_date} - ${edu.end_date}
   ${edu.description || ''}
@@ -171,8 +176,8 @@ INSTRUCTIONS:
     const scorePrompt = `Rate this resume against the job requirements on a scale of 0-100.
 
 JOB REQUIREMENTS:
-${job.description}
-${job.requirements}
+${job.description || ''}
+${job.location || ''}
 
 RESUME:
 ${JSON.stringify(finalResume, null, 2)}
@@ -199,7 +204,7 @@ Return ONLY valid JSON in this format (no markdown):
 
 JOB:
 ${job.title} at ${job.company}
-${job.description}
+${job.description || ''}
 
 CURRENT RESUME:
 ${JSON.stringify(currentResume, null, 2)}
@@ -228,18 +233,20 @@ Return an improved resume in the same JSON format.`;
     }
 
     // 7. Save to database
+    const resumeData: ResumeInsert = {
+      user_id: user.id,
+      job_id: jobId,
+      title: `${job.title} at ${job.company}`,
+      content: currentResume as any,
+      target_language: targetLanguage,
+      ats_score: currentScore,
+      ats_feedback: feedback as any,
+      generation_attempts: attempts,
+    };
+
     const { data: savedResume, error: saveError } = await supabase
       .from('resumes')
-      .insert({
-        user_id: user.id,
-        job_id: jobId,
-        title: `${job.title} at ${job.company}`,
-        content: currentResume,
-        target_language: targetLanguage,
-        ats_score: currentScore,
-        ats_feedback: feedback,
-        generation_attempts: attempts,
-      })
+      .insert(resumeData as any)
       .select()
       .single();
 

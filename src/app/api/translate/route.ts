@@ -74,7 +74,9 @@ export async function POST(request: Request) {
     if (translationCache.size >= CACHE_MAX_SIZE) {
       // Remove oldest entry
       const firstKey = translationCache.keys().next().value;
-      translationCache.delete(firstKey);
+      if (firstKey) {
+        translationCache.delete(firstKey);
+      }
     }
     translationCache.set(cacheKey, translatedText);
 

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useAuth } from '@/components/providers/auth-provider';
 import { createClient } from '@/lib/supabase/client';
+import { Job } from '@/types';
 
 export default function GenerateResumePage() {
   const { user } = useAuth();
@@ -11,7 +12,7 @@ export default function GenerateResumePage() {
   const searchParams = useSearchParams();
   const jobId = searchParams.get('jobId');
 
-  const [job, setJob] = useState<any>(null);
+  const [job, setJob] = useState<Job | null>(null);
   const [targetLanguage, setTargetLanguage] = useState('en');
   const [generating, setGenerating] = useState(false);
   const [result, setResult] = useState<any>(null);
@@ -20,6 +21,8 @@ export default function GenerateResumePage() {
   const supabase = createClient();
 
   const loadJob = useCallback(async () => {
+    if (!jobId) return;
+    
     const { data } = await supabase
       .from('jobs')
       .select('*')
@@ -27,9 +30,10 @@ export default function GenerateResumePage() {
       .single();
 
     if (data) {
-      setJob(data);
+      const jobData = data as unknown as Job;
+      setJob(jobData);
       // Auto-detect job language and set as target
-      setTargetLanguage(data.original_language || 'en');
+      setTargetLanguage(jobData.original_language || 'en');
     }
   }, [jobId, supabase]);
 
